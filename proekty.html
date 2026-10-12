@@ -1,9 +1,15 @@
 <!doctype html>
+<!--
+  Design & development: kapa
+-->
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Наши проекты — ЗПТК</title>
+<meta name="author" content="kapa">
+<link rel="preload" href="plex-sans-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="fonts.css">
 <meta name="description" content="Крупнейшие реализованные проекты ООО «ЗПТК» для Россетей, ФСК ЕЭС, Мосэнерго, Ростелекома и других.">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ООО «ЗПТК»">
@@ -22,8 +28,6 @@
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
 <style>
 body{margin:0;background:#F4F7FA}
 a{color:#0A2A42}a:hover{color:#0077B6}
@@ -281,7 +285,7 @@ h1{font-size:clamp(32px,9vw,40px)!important}
 <footer style="background: #0A2A42; color: #A6C0D4;">
 <div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 14px; line-height: 1.7;">
 <div style="flex: 1 1 480px; min-width: 0;">
-<div style="color: #F4F7FA; font-weight: 600; margin-bottom: 6px;">ООО «Завод программно-технических комплексов» (ООО «ЗПТК»)</div>
+<div data-zk style="color: #F4F7FA; font-weight: 600; margin-bottom: 6px;">ООО «Завод программно-технических комплексов» (ООО «ЗПТК»)</div>
 <div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px;">ИНН 5402001518 · КПП 540201001 · ОГРН 1155476002494</div>
 <div>630049, г. Новосибирск, Красный проспект, д. 200, оф. 311 · +7 (383) 363-23-81 · office@zptk.ru</div>
 <div>Основной вид деятельности: ОКВЭД 62.01 — разработка компьютерного программного обеспечения</div>
@@ -293,6 +297,7 @@ h1{font-size:clamp(32px,9vw,40px)!important}
 <a href="kontakty.html" style="color: #E3EEF6; text-decoration: none;">Контактные данные</a>
 </nav>
 </div>
+<div style="border-top: 1px solid rgba(166,192,212,0.18);"><div style="max-width: 1280px; margin: 0 auto; padding: 16px 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #7F96AA;"><span>© 2005–2026 ООО «ЗПТК»</span><a href="politika.html" style="color: #A6C0D4;">Политика конфиденциальности</a></div></div>
 </footer>
 
 </div>
@@ -350,6 +355,29 @@ off:function(){if(!ctx){return;}clearTimeout(timer);master.gain.cancelScheduledV
   Array.prototype.forEach.call(btns,function(b){b.addEventListener('click',function(){setSound(!root.classList.contains('z-snd-on'),true);});});
   var pref=null;try{pref=localStorage.getItem('zptk-sound')}catch(e){}
   if(pref==='on'){var first=function(ev){if(ev.target.closest&&ev.target.closest('[data-z="sound"]'))return;document.removeEventListener('pointerdown',first,true);setSound(true,false);};document.addEventListener('pointerdown',first,true);}
+})();
+</script>
+<style>
+.z-kapa{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:9999;
+ background:#0A2A42;color:#F4F7FA;border:1px solid #3DB4F0;border-radius:40px;padding:12px 22px;
+ font:500 14px/1.2 'IBM Plex Mono',monospace;box-shadow:0 0 0 6px rgba(61,180,240,.12),0 20px 40px -20px rgba(0,0,0,.6);
+ transition:opacity .35s,transform .35s}
+.z-kapa.on{opacity:1;transform:translate(-50%,0)}
+.z-kapa b{color:#3DB4F0;font-weight:600}
+</style>
+<script>
+(function(){
+  try{console.log('%c⚡ ЗПТК %c сайт разработан kapa ','background:#008DD2;color:#fff;padding:4px 8px;border-radius:4px 0 0 4px;font-weight:600','background:#0A2A42;color:#3DB4F0;padding:4px 8px;border-radius:0 4px 4px 0');}catch(e){}
+  var toast=null,hide=null;
+  function show(){
+    if(!toast){toast=document.createElement('div');toast.className='z-kapa';toast.setAttribute('role','status');
+      toast.innerHTML='⚡ Сайт разработан <b>kapa</b>';document.body.appendChild(toast);}
+    clearTimeout(hide);requestAnimationFrame(function(){toast.classList.add('on');});
+    hide=setTimeout(function(){toast.classList.remove('on');},3500);
+  }
+  var t=document.querySelector('[data-zk]'),n=0,last=0;
+  if(t){t.addEventListener('click',function(){var now=Date.now();n=(now-last<600)?n+1:1;last=now;if(n>=5){n=0;show();}});}
+  var buf='';document.addEventListener('keydown',function(e){if(!e.key||e.key.length!==1)return;buf=(buf+e.key.toLowerCase()).slice(-4);if(buf==='kapa'||buf==='кфзф')show();});
 })();
 </script>
 </body>
