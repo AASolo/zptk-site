@@ -1,0 +1,297 @@
+<!--title: Услуги — ЗПТК-->
+<!--description: Услуги ООО «ЗПТК»: ПТК ЕЦУД, ЕЦУД-аналитик, УСПД, ПИР, поставка, СМР, ПНР и сервисное обслуживание.-->
+<style>
+body{margin:0;background:#F4F7FA}
+a{color:#0A2A42}a:hover{color:#3A4B59}
+@keyframes zSpin{to{transform:rotate(360deg)}}
+@keyframes zOrbit{to{offset-distance:100%}}
+@keyframes zRise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+@keyframes zReveal{from{opacity:0;transform:translateY(36px)}to{opacity:1;transform:none}}
+.z-orbits{transform-box:view-box;transform-origin:260px 260px;animation:zSpin 120s linear infinite}
+.z-e{offset-rotate:0deg;animation:zOrbit 7s linear infinite;filter:drop-shadow(0 0 6px #7FD0F7)}
+.z-e1{offset-path:path('M 490 260 A 230 88 0 1 1 30 260 A 230 88 0 1 1 490 260')}
+.z-e2{offset-path:path('M 375 459.2 A 230 88 60 1 1 145 60.8 A 230 88 60 1 1 375 459.2');animation-duration:8.5s;animation-delay:-3s}
+.z-e3{offset-path:path('M 145 459.2 A 230 88 120 1 1 375 60.8 A 230 88 120 1 1 145 459.2');animation-duration:10s;animation-delay:-6s}
+.z-rise{animation:zRise .9s cubic-bezier(.2,.7,.2,1) both}
+article{transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s}
+article:hover{transform:translateY(-5px);box-shadow:0 22px 44px -24px rgba(10,42,66,.45)}
+@supports (animation-timeline: view()){article,h2{animation:zReveal linear both;animation-timeline:view();animation-range:entry 0% cover 25%}}
+@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+.z-burger{display:none}
+@media (max-width: 1200px){.z-desk{display:none!important}.z-burger{display:inline-flex!important}}
+@media (min-width: 1201px){.z-mnav{display:none!important}}
+@media (max-width: 900px){[style*="max-width: 1280px"]{padding-left:24px!important;padding-right:24px!important}}
+@media (max-width: 640px){
+[style*="padding: 36px"],[style*="padding: 40px"],[style*="padding: 48px"],[style*="padding: 32px"]{padding:22px!important}
+[style*="padding: 34px 30px"]{padding:24px 22px!important}
+[style*="padding: 12px 36px"]{padding:0 22px!important}
+[style*="max-width: 1280px"]{padding:56px 16px!important}
+header [style*="max-width: 1280px"]{padding:10px 16px!important}
+footer [style*="max-width: 1280px"]{padding:36px 16px!important}
+header img{height:36px!important}
+[style*="grid-template-columns: repeat(auto-fit"]{grid-template-columns:minmax(0,1fr)!important}
+dl[style*="minmax(160px"]{grid-template-columns:minmax(0,1fr)!important;gap:2px!important}
+dl[style*="minmax(160px"] dd{margin-bottom:12px!important}
+[style*="border-right: 1px solid #E3ECF3"]{border-right:0!important;border-bottom:1px solid #E3ECF3!important}
+[style*="flex: 1 1 280px"]{flex-basis:100%!important}
+h1{font-size:clamp(32px,9vw,40px)!important}
+}
+
+.z-root,.z-root *{transition:background-color .6s ease,color .6s ease,border-color .6s ease}
+.z-night .z-root,.z-root.z-night{background:#07131D!important;color:#E6EEF5!important}
+.z-night [style*="background: #F4F7FA"]{background:#07131D!important}
+.z-night [style*="background: #FFFFFF"]{background:#0E2232!important}
+.z-night [style*="background: #E7EFF5"]{background:#0B1C29!important}
+.z-night [style*="background: #DDE7EF"]{background:#13293A!important}
+.z-night [style*="background: #E3F2FB"]{background:#10324A!important}
+.z-night [style*="background: #CFDCE7"]{background:#1E3A52!important}
+.z-night [style*="background: #0A2A42"]{background:#050F18!important}
+.z-night [style*="rgba(255,255,255,0.88)"]{background:rgba(5,15,24,.86)!important}
+.z-night [style*="#CFDCE7"],.z-night [style*="#E3ECF3"],.z-night [style*="#DDE7EF"]{border-color:#1E3A52!important}
+.z-night [style*="#9DB3C4"]{border-color:#2D6087!important}
+.z-night [style*="color: #0A2A42"]{color:#E6EEF5!important}
+.z-night [style*="color: #2C4356"],.z-night [style*="color: #3A4B59"],.z-night [style*="color: #26343F"]{color:#B9CADA!important}
+.z-night [style*="color: #4A5A67"]{color:#8FA9BC!important}
+.z-night [style*="color: #0077B6"]{color:#4FC0F5!important}
+.z-night [style*="color: #005A8C"]{color:#9ED8F7!important}
+.z-night a:not([style*="color"]){color:#7FD0F7}
+.z-night input,.z-night textarea{color:#E6EEF5}
+.z-photo{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.z-photo img,.z-dual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;transition:opacity 1s ease}
+.z-photo img{animation:zKen 40s ease-in-out infinite alternate}
+.z-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,42,66,.95) 0%,rgba(10,42,66,.84) 45%,rgba(10,42,66,.5) 100%)}
+.z-night .z-photo::after{background:linear-gradient(100deg,rgba(3,10,17,.96) 0%,rgba(3,10,17,.8) 45%,rgba(3,10,17,.38) 100%)}
+.z-pn{opacity:0}.z-night .z-pn{opacity:1}.z-night .z-pd{opacity:0}
+@keyframes zKen{from{transform:scale(1.03)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
+.z-ph{display:block;width:100%;object-fit:cover;max-width:none}
+.z-ci34{margin:-34px -30px 8px;width:calc(100% + 60px)!important;height:190px}
+.z-ci48{margin:-48px -40px 8px;width:calc(100% + 80px)!important;height:240px}
+.z-ci32{margin:-32px -32px 8px;width:calc(100% + 64px)!important;height:180px}
+.z-card:hover .z-ph,article:hover .z-ph{filter:saturate(1.15) contrast(1.05)}
+.z-tbtn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
+.z-tbtn svg{display:block}
+.z-tbtn .z-ic-sun{display:none}
+.z-night .z-tbtn .z-ic-sun{display:block}.z-night .z-tbtn .z-ic-moon{display:none}
+.z-logo-n{display:none!important}.z-night .z-logo-n{display:block!important}.z-night .z-logo-d{display:none!important}
+.z-ic-wave{opacity:0}.z-snd-on .z-ic-wave{opacity:1;animation:zWave 1.1s ease-in-out infinite}.z-snd-on .z-ic-mute{display:none}
+.z-snd-on [data-z="sound"]{background:#0077B6!important;color:#FFFFFF!important;border-color:#0077B6!important;box-shadow:0 0 0 4px rgba(61,180,240,.25)}
+@keyframes zWave{0%,100%{opacity:.35}50%{opacity:1}}
+.z-snd-on .z-core{animation-duration:1.4s}
+@media (max-width: 640px){
+.z-ci34{margin:-24px -22px 6px!important;width:calc(100% + 44px)!important}
+.z-ci48{margin:-22px -22px 6px!important;width:calc(100% + 44px)!important;height:200px}
+.z-ci32{margin:-22px -22px 6px!important;width:calc(100% + 44px)!important}
+.z-tools{gap:6px!important}
+}
+@media (prefers-reduced-motion: reduce){.z-photo img{animation:none}}
+</style>
+<section style="background: #0A2A42; color: #F4F7FA; position: relative; overflow: hidden;">
+<svg aria-hidden="true" viewBox="0 0 520 520" style="position: absolute; right: -80px; top: -110px; width: 560px; height: 560px; opacity: 0.4;"><g class="z-orbits"><ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2"></ellipse><ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2" transform="rotate(60 260 260)"></ellipse><ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2" transform="rotate(120 260 260)"></ellipse><circle class="z-e z-e1" r="7" fill="#FFFFFF"></circle><circle class="z-e z-e2" r="7" fill="#FFFFFF"></circle><circle class="z-e z-e3" r="7" fill="#FFFFFF"></circle></g><circle cx="260" cy="260" r="44" fill="#008DD2"></circle></svg>
+<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 72px 32px 56px; display: flex; flex-direction: column; gap: 20px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #A6C0D4;">Главная / Услуги</span>
+<h1 class="z-rise" style="margin: 0; font-size: clamp(40px, 5vw, 64px); line-height: 1.05; font-weight: 600; letter-spacing: -0.02em;">Услуги и собственные разработки</h1>
+<p style="margin: 0; font-size: 19px; line-height: 1.55; color: #C5D8E6; max-width: 760px;">Программные комплексы для учёта энергоресурсов, устройства сбора данных и полный цикл работ — от обследования объекта до сервисного обслуживания.</p>
+<nav aria-label="Разделы страницы" style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px;">
+<a href="#ecud" style="color: #F4F7FA; text-decoration: none; font-size: 15px; padding: 10px 18px; border: 1px solid #2D6087; border-radius: 40px;">ПТК ЕЦУД</a>
+<a href="#analitik" style="color: #F4F7FA; text-decoration: none; font-size: 15px; padding: 10px 18px; border: 1px solid #2D6087; border-radius: 40px;">ЕЦУД-аналитик</a>
+<a href="#uspd" style="color: #F4F7FA; text-decoration: none; font-size: 15px; padding: 10px 18px; border: 1px solid #2D6087; border-radius: 40px;">УСПД</a>
+<a href="#works" style="color: #F4F7FA; text-decoration: none; font-size: 15px; padding: 10px 18px; border: 1px solid #2D6087; border-radius: 40px;">Прочие услуги</a>
+</nav>
+</div>
+</section>
+
+<section id="ecud" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 48px; display: flex; flex-direction: column; gap: 48px;">
+<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start;">
+<div style="flex: 999 1 560px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">Собственная разработка</span>
+<h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; font-weight: 600;">ПТК ЕЦУД</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A4B59;">Программно-технический комплекс для коммерческого учёта электроэнергии и энергоресурсов. Разработан российскими специалистами на открытых технологиях, соответствует требованиям рынка энергоресурсов без длительной адаптации и относится к категории «импортозамещение».</p>
+</div>
+<a href="https://reestr.digital.gov.ru/reestr/4036073/" style="flex: 1 1 300px; text-decoration: none; background: #0A2A42; color: #F4F7FA; border-radius: 6px; padding: 28px; display: flex; flex-direction: column; gap: 10px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #3DB4F0; text-transform: uppercase; letter-spacing: 0.08em;">Реестр российского ПО</span>
+<span style="font-size: 26px; font-weight: 600;">Запись № 29851</span>
+<span style="font-size: 15px; color: #C5D8E6; line-height: 1.5;">от 19.09.2025 · класс 12.06 · правообладатель ООО «ЗПТК»</span>
+<span style="font-size: 15px; text-decoration: underline; text-underline-offset: 4px;">Открыть в реестре Минцифры</span>
+</a>
+</div>
+
+<div style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 36px; background: #FFFFFF; display: flex; flex-direction: column; gap: 18px;">
+<h3 style="margin: 0; font-size: 24px; font-weight: 600;">Инновационные характеристики</h3>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px 32px; font-size: 16px; line-height: 1.5; color: #26343F;">
+<li style="display: flex; gap: 12px;"><span style="color: #008DD2;" aria-hidden="true">—</span>Для крупных территориально распределённых предприятий</li>
+<li style="display: flex; gap: 12px;"><span style="color: #008DD2;" aria-hidden="true">—</span>Единое информационное пространство энергоучёта</li>
+<li style="display: flex; gap: 12px;"><span style="color: #008DD2;" aria-hidden="true">—</span>Типовая система ИС-2</li>
+<li style="display: flex; gap: 12px;"><span style="color: #008DD2;" aria-hidden="true">—</span>Автоматическая метрология</li>
+</ul>
+</div>
+
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<h3 style="margin: 0; font-size: 28px; font-weight: 600;">Функции ПО интеграционного уровня</h3>
+<ol style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 1px; background: #CFDCE7; border: 1px solid #CFDCE7;">
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">01</span>Сбор измерений и событий</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">02</span>Контроль достоверности источников</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">03</span>Замещение отсутствующих данных</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">04</span>Мониторинг состояния системы</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">05</span>Технологический контроль и управление</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">06</span>Информационный обмен с внешними системами</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">07</span>Визуализация</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">08</span>Ведение НСИ</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">09</span>Генерация отчётов</li>
+<li style="background: #F4F7FA; padding: 22px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">10</span>Расчёт учётных показателей</li>
+</ol>
+</div>
+
+<div style="background: #0A2A42; color: #F4F7FA; border-radius: 6px; padding: 40px; display: flex; flex-direction: column; gap: 24px;">
+<h3 style="margin: 0; font-size: 28px; font-weight: 600;">Ключевые проектные решения</h3>
+<ul style="margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px 40px; font-size: 16px; line-height: 1.55; color: #E3EEF6;">
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Многоопорная архитектура: серверы СУБД, сбора и расчёта, доступа и визуализации</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Портал на web-технологиях</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Единая модель обмена данными в XML</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Непрерывная регистрация системных событий</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Технологии OLAP / OLTP</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Соответствие IEC 61970 (CIM) и ГОСТ Р 8.596</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Многоуровневая защита: пароли, ЭЦП, потоковое шифрование, МСЭ</li>
+<li style="border-top: 1px solid #1F4D70; padding-top: 14px;">Репликация данных при необходимости</li>
+</ul>
+</div>
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 24px;">
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Контроль достоверности и замещение данных</h3>
+<p style="margin: 0; font-size: 15px; color: #4A5A67;">7 методов</p>
+<ol style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>По контрольным приборам учёта</li>
+<li>По данным смежных субъектов</li>
+<li>По предельным значениям балансов</li>
+<li>По предельной нагрузке</li>
+<li>По статистическим средним</li>
+<li>По типовым графикам нагрузки</li>
+<li>По плановым значениям</li>
+</ol>
+</article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Мониторинг состояния системы</h3>
+<p style="margin: 0; font-size: 15px; color: #4A5A67;">Регистрируемые события</p>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>События объектов и средств измерений</li>
+<li>Остановка и восстановление потока сбора</li>
+<li>Сбой и восстановление связи</li>
+<li>Синхронизация времени СОЕВ</li>
+<li>Факты информационного обмена</li>
+<li>Попытки несанкционированного доступа</li>
+</ul>
+</article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Технологический контроль и управление</h3>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>Удалённое конфигурирование УСПД</li>
+<li>Прямой доступ к счётчикам</li>
+<li>Сверка параметров приборов с НСИ</li>
+<li>Хранение истории изменений</li>
+<li>Трассировка происхождения данных</li>
+</ul>
+</article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Информационный обмен</h3>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>SAP IS-U</li>
+<li>ИАСУ КУ НП «АТС»</li>
+<li>АИИС КУЭ сторонних производителей</li>
+<li>Форматы CIM XML, IEC 61970-501 и XML-макеты для результатов измерений и состояний</li>
+</ul>
+</article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Визуализация</h3>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>Трёхслойная архитектура «клиент — сервер приложений — хранилище»</li>
+<li>Тонкий клиент в браузере</li>
+<li>Хранилище на Oracle или другой СУБД</li>
+<li>Доступ только по HTTPS</li>
+</ul>
+</article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Расчёт учётных показателей</h3>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F;">
+<li>Приращение энергии в точке поставки</li>
+<li>Учёт потерь от ТИ до ГБП</li>
+<li>Поступление и отпуск из сети, переток по сечению</li>
+<li>Баланс</li>
+<li>Показатели по шинам, подстанциям, фидерам, территориям, ценовым зонам</li>
+<li>Пользовательские показатели</li>
+</ul>
+</article>
+</div>
+
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; padding: 32px; background: #FFFFFF; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Ведение нормативно-справочной информации</h3>
+<ul style="margin: 0; padding-left: 22px; font-size: 16px; line-height: 1.7; color: #26343F; columns: 2 320px; column-gap: 40px;">
+<li>Оргструктура предприятия и смежных субъектов</li>
+<li>Реестры подстанций и оборудования</li>
+<li>Реестры средств измерений, измерительных каналов и точек учёта</li>
+<li>Алгоритмы расчёта</li>
+<li>Расписания</li>
+<li>Архив документов</li>
+<li>Справочники оборудования</li>
+</ul>
+</article>
+</section>
+
+<section id="analitik" style="background: #E7EFF5; border-top: 1px solid #CFDCE7; border-bottom: 1px solid #CFDCE7;">
+<div style="max-width: 1280px; margin: 0 auto; padding: 96px 32px; display: flex; flex-wrap: wrap; gap: 48px;">
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 18px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">Собственная разработка</span>
+<h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; font-weight: 600;">ЕЦУД-аналитик</h2>
+<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A4B59;">Решает задачи коммерческого учёта электроэнергии и энергоресурсов: управление автоматическими измерениями, сбор, обработка и хранение данных учёта, предоставление информации потребителям и единое представление статической информации.</p>
+<p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Инсталляция выполняется специалистами ООО «ЗПТК».</p>
+<div style="display: flex; flex-direction: column; gap: 10px; margin-top: 8px;">
+<a href="ecud-analitik-rukovodstvo.pdf" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 20px; background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 4px; text-decoration: none; font-weight: 500;"><span>Руководство пользователя</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">PDF</span></a>
+<a href="ecud-analitik-funkcii.pdf" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 20px; background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 4px; text-decoration: none; font-weight: 500;"><span>Функциональные характеристики</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">PDF</span></a>
+<a href="ecud-analitik-zhiznennyj-cikl.pdf" style="display: flex; justify-content: space-between; gap: 16px; padding: 16px 20px; background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 4px; text-decoration: none; font-weight: 500;"><span>Описание процессов жизненного цикла</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">PDF</span></a>
+</div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 16px;">
+<h3 style="margin: 0; font-size: 22px; font-weight: 600;">Системные требования</h3>
+<div style="overflow-x: auto; border: 1px solid #CFDCE7; border-radius: 6px; background: #FFFFFF;">
+<table style="width: 100%; border-collapse: collapse; font-size: 15px; min-width: 440px;">
+<thead><tr style="text-align: left; background: #0A2A42; color: #F4F7FA;"><th style="padding: 14px 18px; font-weight: 600;">Параметр</th><th style="padding: 14px 18px; font-weight: 600;">Linux</th><th style="padding: 14px 18px; font-weight: 600;">Windows</th></tr></thead>
+<tbody>
+<tr style="border-top: 1px solid #DDE7EF;"><td style="padding: 14px 18px; color: #4A5A67;">ОС</td><td style="padding: 14px 18px;">Ubuntu 16.04 / 18.04</td><td style="padding: 14px 18px;">Windows 10</td></tr>
+<tr style="border-top: 1px solid #DDE7EF;"><td style="padding: 14px 18px; color: #4A5A67;">Процессор</td><td style="padding: 14px 18px;">x64 с SSE2, 1 ядро</td><td style="padding: 14px 18px;">x86 / x64 с SSE2, 1 ядро</td></tr>
+<tr style="border-top: 1px solid #DDE7EF;"><td style="padding: 14px 18px; color: #4A5A67;">ОЗУ</td><td style="padding: 14px 18px;">2 ГБ</td><td style="padding: 14px 18px;">2 ГБ</td></tr>
+<tr style="border-top: 1px solid #DDE7EF;"><td style="padding: 14px 18px; color: #4A5A67;">Видео</td><td style="padding: 14px 18px;">любой адаптер</td><td style="padding: 14px 18px;">256 МБ, DirectX 10+</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</section>
+
+<section id="uspd" style="max-width: 1280px; margin: 0 auto; padding: 96px 32px 48px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">Аппаратная часть</span>
+<h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; font-weight: 600;">Собственные разработки УСПД</h2>
+</div>
+<a href="kontakty.html" style="font-weight: 600; font-size: 16px; color: #0077B6;">Фото и характеристики — по запросу</a>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;">
+<div style="border: 1px solid #CFDCE7; border-radius: 6px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">УСПД</span><span style="font-size: 22px; font-weight: 600;">УСПД Альтаир</span></div>
+<div style="border: 1px solid #CFDCE7; border-radius: 6px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">УСПД</span><span style="font-size: 22px; font-weight: 600;">УСПД ЗПТК</span></div>
+<div style="border: 1px solid #CFDCE7; border-radius: 6px; background: #FFFFFF; padding: 28px; display: flex; flex-direction: column; gap: 8px;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">КПТ</span><span style="font-size: 22px; font-weight: 600;">КПТ Альтаир</span></div>
+</div>
+</section>
+
+<section id="works" style="max-width: 1280px; margin: 0 auto; padding: 48px 32px 112px; display: flex; flex-direction: column; gap: 32px;">
+<div style="display: flex; flex-direction: column; gap: 14px;">
+<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">Полный цикл работ</span>
+<h2 style="margin: 0; font-size: clamp(32px, 3.6vw, 48px); line-height: 1.1; font-weight: 600;">Прочие услуги</h2>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="plastic.jpg" alt="Производство пластиковых компонентов" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">Производство пластиковых компонентов</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Литьё под давлением корпусных изделий для поставляемых комплексов.</p></div></article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="pir.jpg" alt="Проектно-изыскательные работы" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">ПИР и ППО</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Проектно-изыскательные работы и предпроектное обследование с подбором экономичного и энергоэффективного оборудования.</p></div></article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="supply.jpg" alt="Поставка оборудования" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">Поставка</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Оборудование и материалы по дистрибьюторской стоимости.</p></div></article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="smr.jpg" alt="Строительно-монтажные работы" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">СМР</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Монтаж по ТТР с контролем учёта и допуском приборов учёта в эксплуатацию.</p></div></article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="pnr.jpg" alt="Пусконаладочные работы" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">ПНР</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Пусконаладка, формирование балансных групп, анализ потребления и выявление признаков хищения энергии.</p></div></article>
+<article style="border: 1px solid #CFDCE7; border-radius: 6px; overflow: hidden; background: #FFFFFF;"><img src="service.jpg" alt="Сервисное обслуживание" loading="lazy" style="width: 100%; height: 220px; object-fit: cover; display: block;"><div style="padding: 28px; display: flex; flex-direction: column; gap: 10px;"><h3 style="margin: 0; font-size: 22px; font-weight: 600;">Сервисное обслуживание</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Поддержание работоспособности системы, предиктивное выявление хищений и предупреждение аварий.</p></div></article>
+</div>
+</section>
