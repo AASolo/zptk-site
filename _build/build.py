@@ -162,7 +162,7 @@ def cta_presentation(prefix=""):
     return f'''<section class="sec sec--tight"><div class="wrap"><div class="cta reveal">{dark_bg()}
 <div class="stack" style="max-width:640px"><span class="eyebrow">Презентация</span>
 <h2 class="h2">Вся группа ЗПТК в одном файле</h2>
-<p>Направления, собственные разработки, партнёры и схемы решений. Удобно переслать коллегам и приложить к запросу.</p></div>
+<p>Направления, собственные разработки, ориентиры и схемы решений. Удобно переслать коллегам и приложить к запросу.</p></div>
 <div class="actions">{pdf_button(prefix)}<a class="btn btn--ghost btn--lg" href="mailto:{ORG["email"]}">{ORG["email"]}</a></div>
 </div></div></section>'''
 
@@ -199,7 +199,7 @@ NAV = [
     ("o-kompanii.html", "О компании"),
     ("napravleniya.html", "Направления"),
     ("razrabotki.html", "Разработки"),
-    ("partnery.html", "Партнёры"),
+    ("partnery.html", "Ориентиры"),
     ("proekty.html", "Проекты"),
     ("kontakty.html", "Контакты"),
 ]
@@ -263,7 +263,7 @@ def footer(prefix):
 <nav aria-label="Направления, продолжение"><div class="ftr__h" aria-hidden="true">&nbsp;</div>{dirs_col2}</nav>
 <nav aria-label="Компания"><div class="ftr__h">Компания</div>
 <a href="{prefix}o-kompanii.html">О компании</a><a href="{prefix}razrabotki.html">Собственные разработки</a>
-<a href="{prefix}partnery.html">Технологии и партнёры</a><a href="{prefix}proekty.html">Проекты и кейсы</a>
+<a href="{prefix}partnery.html">Ориентиры и технологии</a><a href="{prefix}proekty.html">Проекты и кейсы</a>
 <a href="{prefix}prezentaciya.html">Презентация (PDF)</a><a href="{prefix}it.html">Сведения об IT-деятельности</a>
 <a href="{prefix}kontakty.html">Контакты и реквизиты</a></nav>
 </div>
@@ -350,8 +350,8 @@ def page_index():
 <h3 class="h3" style="color:#fff">{p["title"]}</h3><p>{p["lead"]}</p><span class="card__more">Подробнее {ARR}</span></a>''')
     cases = "".join(f'''<a class="card reveal" href="proekty.html#case-{i + 1}"><span class="card__tag">Кейс {i + 1:02d} · {DIR_BY_SLUG[c["dir"]]["title"]}</span>
 <h3 class="h3" style="font-size:21px">{c["title"]}</h3><span class="card__more">Подробнее {ARR}</span></a>''' for i, c in enumerate(CASES))
-    partners = ["Motorola Solutions", "Cisco Systems", "KNPP", "SSI Schäfer", "FIRST", "Axelot", "МТС", "Ростелеком",
-                "Сервионика", "Прософт-Системы", "НТЦ «ГОСАН»", "ИНБРЭС", "Yandex DataLens", "1С:PM"]
+    partners = ["Motorola Solutions", "Cisco Systems", "KNAPP", "SSI Schäfer", "ГК «FIRST»", "AXELOT", "МТС", "Ростелеком",
+                "Сервионика", "Прософт-Системы", "ИНБРЭС", "Bechtel", "Fluor"]
     body = f'''<section class="hero" id="top">{dark_bg()}
 <div class="wrap hero__in"><div class="hero__row">
 <div class="hero__text">
@@ -359,7 +359,7 @@ def page_index():
 <h1 class="h1 z-rise" style="animation-delay:.12s">Инжиниринг полного цикла для критической инфраструктуры</h1>
 <p class="hero__sub z-rise" style="animation-delay:.2s">Связь. Логистика. Энергетика. Собственное&nbsp;ПО. ИИ-агенты. EPCM.</p>
 <p class="lead z-rise" style="animation-delay:.28s">Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости. Развиваем собственные разработки на базе ИИ и ведём проекты по EPCM-контрактам.</p>
-<div class="actions z-rise" style="animation-delay:.36s">{pdf_button()}<a class="btn btn--ghost btn--lg" href="napravleniya.html">12 направлений {ARR}</a></div>
+<div class="actions z-rise" style="animation-delay:.36s">{pdf_button()}<a class="btn btn--ghost btn--lg" href="napravleniya.html">8 направлений {ARR}</a></div>
 </div>
 <div class="hero__art">{emblem()}</div>
 </div>
@@ -368,7 +368,7 @@ def page_index():
 
 <section class="sec" id="napravleniya"><div class="wrap stack-lg">
 <div class="sec-head reveal"><div><span class="eyebrow">Чем мы занимаемся</span>
-<h2 class="h2">Четыре блока, двенадцать направлений</h2>
+<h2 class="h2">Четыре блока, восемь направлений</h2>
 <p class="lead">От проекта и стройки до собственного ПО и сервиса: одна группа отвечает за весь жизненный цикл объекта.</p></div>
 <a class="link-arr" href="napravleniya.html">Все направления {ARR}</a></div>
 <div class="grid-4">{"".join(blocks)}</div>
@@ -390,9 +390,9 @@ def page_index():
 <div class="grid-4">{"".join(products)}</div></div></section>
 
 <section class="sec sec--tight"><div class="wrap stack">
-<div class="sec-head reveal"><div><span class="eyebrow">Технологии и партнёры</span>
-<h2 class="h2">Работаем с лидерами рынка</h2></div>
-<a class="link-arr" href="partnery.html">Все партнёры {ARR}</a></div>
+<div class="sec-head reveal"><div><span class="eyebrow">Ориентиры</span>
+<h2 class="h2">Равняемся на лидеров мирового рынка</h2></div>
+<a class="link-arr" href="partnery.html">Все ориентиры и технологии {ARR}</a></div>
 {chips(partners)}
 </div></section>
 
@@ -421,13 +421,13 @@ def status(st):
 def page_presentation():
     body = page_hero([("index.html", "Главная"), (None, "Презентация")], "Презентация ЗПТК",
                      "Скачать презентацию",
-                     "Позиционирование, 12 направлений, собственные разработки, партнёры и кейсы — в одном PDF-файле.",
+                     "Позиционирование, 8 направлений, собственные разработки, ориентиры и кейсы — в одном PDF-файле.",
                      f'<div class="actions">{pdf_button()}<a class="btn btn--ghost btn--lg" href="napravleniya.html">Смотреть направления на сайте {ARR}</a></div>')
     sections = [("01", "Позиционирование", "Инжиниринговая группа полного цикла для критической инфраструктуры"),
-                ("02", "4 блока и 12 направлений", "Инфраструктура, собственные разработки, сервис, EPCM"),
+                ("02", "4 блока и 8 направлений", "Инфраструктура, собственные разработки, сервис, EPCM"),
                 ("03", "Схемы решений", "Сигнал → решение → действие для каждого направления"),
                 ("04", "Собственные разработки", "ПТК ЕЦУД в реестре, ИИ-агенты, анализ потерь, финансовый радар"),
-                ("05", "Технологии и партнёры", "Связь, логистика, сервис, проектный контроль, EPCM"),
+                ("05", "Ориентиры и технологии", "Связь, логистика, сервис, ИИ-агенты, EPCM"),
                 ("06", "Кейсы и контакты", "Задача, решение, технологии, результат")]
     cards = "".join(f'<div class="card"><span class="block__num">{n}</span><h3 class="h3" style="font-size:20px">{t}</h3><p>{d}</p></div>'
                     for n, t, d in sections)
@@ -437,7 +437,7 @@ def page_presentation():
 <p class="muted">Нужна презентация в другом формате или под конкретный объект? Напишите на <a href="mailto:{ORG["email"]}">{ORG["email"]}</a>.</p>
 </div></section>'''
     add("prezentaciya.html", layout("prezentaciya.html", "Презентация ЗПТК (PDF) — инжиниринг полного цикла",
-                                    "Скачайте презентацию ЗПТК: инжиниринг полного цикла, 12 направлений, собственное ПО в реестре РФ, ИИ-агенты, EPCM-контракты.",
+                                    "Скачайте презентацию ЗПТК: инжиниринг полного цикла, 8 направлений, собственное ПО в реестре РФ, ИИ-агенты, EPCM-контракты.",
                                     body, [crumbs_ld([("index.html", "Главная"), ("prezentaciya.html", "Презентация")])]))
 
 

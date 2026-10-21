@@ -1,4 +1,4 @@
-# Разделы сайта: направления, разработки, партнёры, проекты, о компании.
+# Разделы сайта: направления, разработки, ориентиры, проекты, о компании.
 from data import ORG, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS, CASES, T
 
 
@@ -18,7 +18,7 @@ def build(b):
 <h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{blk["title"]}</h2><p class="lead">{blk["text"]}</p></div></div>
 <div class="grid">{cards}</div></div>''')
     anchors = "".join(f'<a href="#{blk["key"]}">{blk["title"]}</a>' for blk in BLOCKS)
-    body = page_hero([("index.html", "Главная"), (None, "Направления")], "12 направлений · 4 блока",
+    body = page_hero([("index.html", "Главная"), (None, "Направления")], "8 направлений · 4 блока",
                      "Направления ЗПТК",
                      "Связь, логистика, энергетика, собственное ПО, ИИ-агенты, сервис и EPCM. Каждое направление — отдельная команда и законченный цикл работ.",
                      f'<div class="anchor-nav">{anchors}</div>')
@@ -28,10 +28,10 @@ def build(b):
               {"@type": "ListItem", "position": i + 1, "name": d["title"], "url": BASE + f'napravleniya/{d["slug"]}.html'}
               for i, d in enumerate(DIRECTIONS)]}]
     add("napravleniya.html", layout("napravleniya.html", "Направления ЗПТК: связь, логистика, энергетика, ИИ, EPCM",
-                                    "12 направлений ЗПТК в 4 блоках: инфраструктура связи, логистические центры, АИИС КУЭ, РЗА, ЦОД, собственное ПО, ИИ-агенты, сервис, энергосервис, EPCM.",
+                                    "8 направлений ЗПТК в 4 блоках: инфраструктура связи, логистические центры, АИИС КУЭ и энергосервис, ЦОД, собственное ПО, ИИ-агенты, предиктивный сервис, EPCM с РЗА.",
                                     body, ld))
 
-    # ------------------------------------------------ 12 подстраниц
+    # ------------------------------------------------ подстраницы направлений
     for i, d in enumerate(DIRECTIONS):
         blk = b.BLOCK_BY_KEY[d["block"]]
         path = f'napravleniya/{d["slug"]}.html'
@@ -49,15 +49,23 @@ def build(b):
         if d["partners"] or d.get("benchmarks"):
             rows = []
             if d["partners"]:
-                rows.append(f'<div class="stack" style="gap:12px"><span class="muted mono" style="font-size:13px">ТЕХНОЛОГИИ И ПАРТНЁРЫ</span>{chips(d["partners"])}</div>')
+                rows.append(f'<div class="stack" style="gap:12px"><span class="muted mono" style="font-size:13px">ТЕХНОЛОГИИ И ПРОИЗВОДИТЕЛИ</span>{chips(d["partners"])}</div>')
             if d.get("benchmarks"):
                 rows.append(f'<div class="stack" style="gap:12px"><span class="muted mono" style="font-size:13px">ОРИЕНТИРЫ</span>{chips(d["benchmarks"])}</div>')
             partners_html = f'''<section class="sec sec--tight"><div class="wrap stack">
-<span class="eyebrow">Ориентиры и партнёры</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">С кем и на чём работаем</h2>
-{"".join(rows)}<a class="link-arr" href="../partnery.html">Все технологии и партнёры {ARR}</a></div></section>'''
+<span class="eyebrow">Ориентиры</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">На кого равняемся и на чём строим</h2>
+{"".join(rows)}<a class="link-arr" href="../partnery.html">Все ориентиры и технологии {ARR}</a></div></section>'''
         proof = (f'<div class="panel panel--accent"><span class="eyebrow">Из практики</span><p style="margin-top:8px">{d["proof"]}</p>'
                  f'<a class="link-arr" style="margin-top:12px" href="../proekty.html">Все проекты {ARR}</a></div>') if d.get("proof") else ""
         more = f'<a class="btn btn--ghost" href="../{d["more"][0]}">{d["more"][1]} {ARR}</a>' if d.get("more") else ""
+        dk = d.get("deck")
+        if dk:
+            scheme_html = f'''<div class="sec-head"><div><span class="eyebrow">Схема · {E(dk["scheme_title"])}</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{E(dk["scheme_caption"])}</h2></div></div>
+<figure class="scheme"><img src="../img/schemes/{dk["n"]:02d}.webp" alt="{E(dk["scheme_alt"])}" loading="lazy" decoding="async"></figure>
+{flow(d["flow"], label="Схема решения: " + d["title"])}'''
+        else:
+            scheme_html = f'''<div class="sec-head"><div><span class="eyebrow">Схема</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Сигнал → решение → действие</h2></div></div>
+{flow(d["flow"], label="Схема решения: " + d["title"])}'''
         prev_d, next_d = DIRECTIONS[i - 1], DIRECTIONS[(i + 1) % len(DIRECTIONS)]
         body = hero + f'''
 <section class="sec"><div class="wrap split">
@@ -71,8 +79,7 @@ def build(b):
 <div class="grid">{tech}</div></div></section>
 
 <section class="sec sec--dark">{b.dark_bg()}<div class="wrap stack-lg" style="position:relative">
-<div class="sec-head"><div><span class="eyebrow">Схема</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Сигнал → решение → действие</h2></div></div>
-{flow(d["flow"], label="Схема решения: " + d["title"])}</div></section>
+{scheme_html}</div></section>
 {partners_html}
 <section class="sec{" sec--alt" if partners_html else ""}"><div class="wrap split">
 <div class="stack"><span class="eyebrow">Результат для заказчика</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Что получает заказчик</h2>
@@ -118,10 +125,10 @@ def build(b):
                    "description": b.re.sub("<[^>]+>", "", p["lead"]), "url": BASE + f'razrabotki.html#{p["id"]}',
                    "brand": {"@type": "Brand", "name": "ЗПТК"}, "manufacturer": {"@id": BASE + "#org"}})
     add("razrabotki.html", layout("razrabotki.html", "Собственные разработки ЗПТК: ПТК ЕЦУД, ИИ-агенты, анализ потерь",
-                                  "ПТК ЕЦУД в реестре российского ПО (№ 29851), ИИ-агенты «Цифровой инженер» и «Страх качества», ИИ-анализ потерь и «Финансовый радар».",
+                                  "ПТК ЕЦУД в реестре российского ПО (№ 29851), ИИ-агенты «Цифровой инженер» и «Страж качества», ИИ-анализ потерь.",
                                   body, ld))
 
-    # ------------------------------------------------ Технологии и партнёры
+    # ------------------------------------------------ Ориентиры и технологии
     rows = []
     for name, slug, items in PARTNER_GROUPS:
         lis = "".join(f'<li><b>{n}</b><span>{s or "&nbsp;"}</span></li>' for n, s in items)
@@ -129,14 +136,14 @@ def build(b):
         rows.append(f'''<div class="partner-group reveal"><div class="stack" style="gap:10px"><h2 class="h3">{name}</h2>
 <a class="link-arr" style="font-size:15px" href="napravleniya/{slug}.html">{d["title"]} {ARR}</a></div>
 <ul class="wordmarks">{lis}</ul></div>''')
-    body = page_hero([("index.html", "Главная"), (None, "Технологии и партнёры")], "Технологии и партнёры",
-                     "Технологии и партнёры",
-                     "Производители, платформы и компании-ориентиры, с которыми мы строим решения. " + T("Статусы партнёрства (сертифицированный партнёр, дистрибьютор, интегратор) и логотипы — уточнить."))
+    body = page_hero([("index.html", "Главная"), (None, "Ориентиры и технологии")], "Ориентиры и технологии",
+                     "Ориентиры и технологии",
+                     "Мировые компании, на практики которых мы равняемся в каждом направлении, и технологии, на которых строим решения.")
     body += f'''<section class="sec"><div class="wrap">{"".join(rows)}
-<p class="muted" style="margin-top:24px;font-size:15px">Пометка «ориентир» означает компанию, на практики которой мы равняемся. Товарные знаки принадлежат их правообладателям.</p></div></section>''' + cta()
-    add("partnery.html", layout("partnery.html", "Технологии и партнёры ЗПТК: Motorola, Cisco, KNPP, SSI Schäfer, ГОСАН",
-                                "Партнёры и технологии ЗПТК: связь (Motorola Solutions, Cisco), логистика (KNPP, SSI Schäfer, FIRST, Axelot), сервис, проектный контроль, EPCM.",
-                                body, [crumbs_ld([("index.html", "Главная"), ("partnery.html", "Технологии и партнёры")])]))
+<p class="muted" style="margin-top:24px;font-size:15px">«Ориентир» — компания, на практики которой мы равняемся; это не заявление о партнёрстве. Товарные знаки принадлежат их правообладателям.</p></div></section>''' + cta()
+    add("partnery.html", layout("partnery.html", "Ориентиры и технологии ЗПТК: Motorola, Cisco, KNAPP, SSI Schäfer, Bechtel",
+                                "Ориентиры и технологии ЗПТК по направлениям: связь (Motorola Solutions, Cisco), логистика (KNAPP, SSI Schäfer, FIRST, AXELOT), сервис, ИИ-агенты, EPCM.",
+                                body, [crumbs_ld([("index.html", "Главная"), ("partnery.html", "Ориентиры и технологии")])]))
 
     # ------------------------------------------------ Проекты: кейсы + прежний список
     case_html = []
@@ -165,7 +172,7 @@ def build(b):
     history = [("2005", "Старт", "Выходим на рынок инжиниринга в энергетике. Новосибирск."),
                ("70+", "Крупные проекты", "Россети, ФСК ЕЭС, Мосэнерго, Ростелеком, Газпром энергохолдинг."),
                ("2025", "ЕЦУД в реестре", "Наше ПО в реестре российского ПО, запись № 29851."),
-               ("2026", "Инжиниринговая группа", "12 направлений, ИИ-агенты и EPCM-контракты.")]
+               ("2026", "Инжиниринговая группа", "8 направлений для заказчиков, ИИ-агенты и EPCM-контракты.")]
     hist = "".join(f'<div class="card"><span class="mono" style="font-size:34px;font-weight:600;color:var(--accent)">{y}</span><h3 class="h3" style="font-size:20px">{t}</h3><p>{x}</p></div>' for y, t, x in history)
     team = [("Богданов Антон Владимирович", "Генеральный директор"),
             ("Сергеев Илья", "Заместитель генерального директора — директор по развитию"),

@@ -337,3 +337,5 @@ html.z-night .checks li::before{background-color:#10324A}
 
 /* ---------- Печать ---------- */
 @media print{.hdr,.ftr,.tbtn,.burger,.ai-bg,.ai-net{display:none!important}.hero,.sec--dark{background:#fff!important;color:#000!important}}
+.scheme{margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b1a33;max-width:560px}
+.scheme img{display:block;width:100%;height:auto}
