@@ -1,450 +1,172 @@
 <!doctype html>
 <!--
   Design & development: kapa
+  Страница собрана скриптом _build/build.py — правьте исходники в _build/.
 -->
 <html lang="ru">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ЗПТК — инжиниринг в энергетике</title>
+<title>ЗПТК — инжиниринг полного цикла: связь, логистика, энергетика, АИИС КУЭ, EPCM</title>
+<meta name="description" content="Проектирование, строительство и обслуживание инфраструктуры повышенной отказоустойчивости. Собственное ПО в реестре РФ. ИИ-агенты. EPCM-контракты.">
 <meta name="author" content="kapa">
+<link rel="canonical" href="https://aasolo.github.io/zptk-site/">
 <link rel="preload" href="plex-sans-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="fonts.css">
-<meta name="description" content="ООО «ЗПТК» — инжиниринг в энергетике с 2005 года: АИИС КУЭ, АИИС ТУЭ, АСКУТ, АСУ ТП, собственное ПО ЕЦУД и энергосервисные контракты.">
+<link rel="stylesheet" href="assets/site.css">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="ООО «ЗПТК»">
+<meta property="og:site_name" content="ЗПТК">
 <meta property="og:locale" content="ru_RU">
-<meta property="og:title" content="ЗПТК — инжиниринг в энергетике">
-<meta property="og:description" content="ООО «ЗПТК» — инжиниринг в энергетике с 2005 года: АИИС КУЭ, АИИС ТУЭ, АСКУТ, АСУ ТП, собственное ПО ЕЦУД и энергосервисные контракты.">
+<meta property="og:title" content="ЗПТК — инжиниринг полного цикла: связь, логистика, энергетика, АИИС КУЭ, EPCM">
+<meta property="og:description" content="Проектирование, строительство и обслуживание инфраструктуры повышенной отказоустойчивости. Собственное ПО в реестре РФ. ИИ-агенты. EPCM-контракты.">
 <meta property="og:url" content="https://aasolo.github.io/zptk-site/">
 <meta property="og:image" content="https://aasolo.github.io/zptk-site/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="ЗПТК — инжиниринг в энергетике с 2005 года">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://aasolo.github.io/zptk-site/og.jpg">
 <meta name="theme-color" content="#0A2A42">
 <link rel="icon" href="favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
-<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<style>
-body{margin:0;background:#F4F7FA}
-a{color:#0A2A42}a:hover{color:#0077B6}
-@keyframes zSpin{to{transform:rotate(360deg)}}
-@keyframes zOrbit{to{offset-distance:100%}}
-@keyframes zRipple{0%{transform:scale(1);opacity:.6}100%{transform:scale(4.4);opacity:0}}
-@keyframes zGlow{0%,100%{filter:drop-shadow(0 0 8px rgba(61,180,240,.45))}50%{filter:drop-shadow(0 0 28px rgba(61,180,240,.95))}}
-@keyframes zBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-@keyframes zRise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:none}}
-@keyframes zDraw{from{transform:scaleX(0)}to{transform:scaleX(1)}}
-@keyframes zMarquee{to{transform:translateX(-50%)}}
-@keyframes zFlow{to{stroke-dashoffset:-24}}
-@keyframes zReveal{from{opacity:0;transform:translateY(40px)}to{opacity:1;transform:none}}
-@keyframes zBlink{0%,100%{opacity:1}50%{opacity:.25}}
-.z-orbits{transform-box:view-box;transform-origin:260px 260px;animation:zSpin 120s linear infinite}
-.z-e{offset-rotate:0deg;animation:zOrbit 6s linear infinite;filter:drop-shadow(0 0 6px #7FD0F7)}
-.z-e1{offset-path:path('M 490 260 A 230 88 0 1 1 30 260 A 230 88 0 1 1 490 260')}
-.z-e2{offset-path:path('M 375 459.2 A 230 88 60 1 1 145 60.8 A 230 88 60 1 1 375 459.2');animation-duration:7.5s;animation-delay:-2s}
-.z-e3{offset-path:path('M 145 459.2 A 230 88 120 1 1 375 60.8 A 230 88 120 1 1 145 459.2');animation-duration:9s;animation-delay:-5s}
-.z-e4{offset-path:path('M 490 260 A 230 88 0 1 1 30 260 A 230 88 0 1 1 490 260');animation-delay:-3s;opacity:.6}
-.z-rip{transform-box:fill-box;transform-origin:center;animation:zRipple 4.5s cubic-bezier(.2,.6,.3,1) infinite}
-.z-rip2{animation-delay:-1.5s}.z-rip3{animation-delay:-3s}
-.z-core{transform-box:fill-box;transform-origin:center;animation:zGlow 3s ease-in-out infinite}
-.z-chip{animation:zBob 5s ease-in-out infinite}
-.z-rise{animation:zRise .9s cubic-bezier(.2,.7,.2,1) both}
-.z-hl{position:relative;white-space:nowrap;color:#7FD0F7}
-.z-hl::after{content:'';position:absolute;left:0;right:0;bottom:-.06em;height:.08em;background:#3DB4F0;transform-origin:left;animation:zDraw 1.1s .9s cubic-bezier(.7,0,.2,1) both}
-.z-track{display:flex;width:max-content;animation:zMarquee 60s linear infinite}
-.z-band:hover .z-track{animation-play-state:paused}
-.z-flow{stroke-dasharray:6 6;animation:zFlow 1s linear infinite}
-.z-live{animation:zBlink 1.6s ease-in-out infinite}
-.z-btn{transition:background .2s,transform .2s,border-color .2s}
-.z-btn:hover{transform:translateY(-2px)}
-.z-btn .z-arr{display:inline-block;transition:transform .25s}
-.z-btn:hover .z-arr{transform:translateX(5px)}
-.z-card{position:relative;transition:transform .4s cubic-bezier(.2,.7,.2,1),box-shadow .4s,border-color .4s}
-.z-card::before{content:'';position:absolute;left:0;top:0;right:0;height:3px;background:#008DD2;transform:scaleX(0);transform-origin:left;transition:transform .5s cubic-bezier(.2,.7,.2,1)}
-.z-card:hover{transform:translateY(-6px);box-shadow:0 22px 44px -22px rgba(10,42,66,.45)}
-.z-card:hover::before{transform:scaleX(1)}
-.z-card .z-ico{transition:transform .4s,color .4s}
-.z-card:hover .z-ico{transform:scale(1.12) rotate(-6deg);color:#008DD2}
-@supports (animation-timeline: view()){.z-reveal{animation:zReveal linear both;animation-timeline:view();animation-range:entry 0% cover 28%}}
-.z-still *,.z-still *::before,.z-still *::after{animation:none!important;transition:none!important}
-@media (prefers-reduced-motion: reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
-.z-burger{display:none}
-@media (max-width: 1200px){.z-desk{display:none!important}.z-burger{display:inline-flex!important}}
-@media (min-width: 1201px){.z-mnav{display:none!important}}
-@media (max-width: 900px){[style*="max-width: 1280px"]{padding-left:24px!important;padding-right:24px!important}}
-@media (max-width: 640px){
-[style*="padding: 36px"],[style*="padding: 40px"],[style*="padding: 48px"],[style*="padding: 32px"]{padding:22px!important}
-[style*="padding: 34px 30px"]{padding:24px 22px!important}
-[style*="padding: 12px 36px"]{padding:0 22px!important}
-[style*="max-width: 1280px"]{padding:56px 16px!important}
-header [style*="max-width: 1280px"]{padding:10px 16px!important}
-footer [style*="max-width: 1280px"]{padding:36px 16px!important}
-header img{height:36px!important}
-[style*="grid-template-columns: repeat(auto-fit"]{grid-template-columns:minmax(0,1fr)!important}
-dl[style*="minmax(220px"]{grid-template-columns:repeat(2,minmax(0,1fr))!important}
-dd[style*="font-size: 52px"]{font-size:34px!important}
-dl[style*="minmax(160px"]{grid-template-columns:minmax(0,1fr)!important;gap:2px!important}
-dl[style*="minmax(160px"] dd{margin-bottom:12px!important}
-[style*="border-right: 1px solid #E3ECF3"]{border-right:0!important;border-bottom:1px solid #E3ECF3!important}
-[style*="flex: 1 1 280px"]{flex-basis:100%!important}
-h1{font-size:clamp(32px,9vw,40px)!important}
-[style*="padding: 17px 30px"],[style*="padding: 16px 29px"]{width:100%;justify-content:center;box-sizing:border-box}
-.z-chip{font-size:11px!important;padding:6px 10px!important}
-}
-
-.z-root,.z-root *{transition:background-color .6s ease,color .6s ease,border-color .6s ease}
-.z-night .z-root,.z-root.z-night{background:#07131D!important;color:#E6EEF5!important}
-.z-night [style*="background: #F4F7FA"]{background:#07131D!important}
-.z-night [style*="background: #FFFFFF"]{background:#0E2232!important}
-.z-night [style*="background: #E7EFF5"]{background:#0B1C29!important}
-.z-night [style*="background: #DDE7EF"]{background:#13293A!important}
-.z-night [style*="background: #E3F2FB"]{background:#10324A!important}
-.z-night [style*="background: #CFDCE7"]{background:#1E3A52!important}
-.z-night [style*="background: #0A2A42"]{background:#050F18!important}
-.z-night [style*="rgba(255,255,255,0.88)"]{background:rgba(5,15,24,.86)!important}
-.z-night [style*="#CFDCE7"],.z-night [style*="#E3ECF3"],.z-night [style*="#DDE7EF"]{border-color:#1E3A52!important}
-.z-night [style*="#9DB3C4"]{border-color:#2D6087!important}
-.z-night [style*="color: #0A2A42"]{color:#E6EEF5!important}
-.z-night [style*="color: #2C4356"],.z-night [style*="color: #3A4B59"],.z-night [style*="color: #26343F"]{color:#B9CADA!important}
-.z-night [style*="color: #4A5A67"]{color:#8FA9BC!important}
-.z-night [style*="color: #0077B6"]{color:#4FC0F5!important}
-.z-night [style*="color: #005A8C"]{color:#9ED8F7!important}
-.z-night a:not([style*="color"]){color:#7FD0F7}
-.z-night input,.z-night textarea{color:#E6EEF5}
-.z-photo{position:absolute;inset:0;overflow:hidden;pointer-events:none}
-.z-photo img,.z-dual img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;max-width:none;transition:opacity 1s ease}
-.z-photo img{animation:zKen 40s ease-in-out infinite alternate}
-.z-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,42,66,.95) 0%,rgba(10,42,66,.84) 45%,rgba(10,42,66,.5) 100%)}
-.z-night .z-photo::after{background:linear-gradient(100deg,rgba(3,10,17,.96) 0%,rgba(3,10,17,.8) 45%,rgba(3,10,17,.38) 100%)}
-.z-pn{opacity:0}.z-night .z-pn{opacity:1}.z-night .z-pd{opacity:0}
-@keyframes zKen{from{transform:scale(1.03)}to{transform:scale(1.12) translate(-1.5%,-1%)}}
-.z-ph{display:block;width:100%;object-fit:cover;max-width:none}
-.z-ci34{margin:-34px -30px 8px;width:calc(100% + 60px)!important;height:190px}
-.z-ci48{margin:-48px -40px 8px;width:calc(100% + 80px)!important;height:240px}
-.z-ci32{margin:-32px -32px 8px;width:calc(100% + 64px)!important;height:180px}
-.z-card:hover .z-ph,article:hover .z-ph{filter:saturate(1.15) contrast(1.05)}
-.z-tbtn{width:44px;height:44px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0}
-.z-tbtn svg{display:block}
-.z-tbtn .z-ic-sun{display:none}
-.z-night .z-tbtn .z-ic-sun{display:block}.z-night .z-tbtn .z-ic-moon{display:none}
-.z-logo-n{display:none!important}.z-night .z-logo-n{display:block!important}.z-night .z-logo-d{display:none!important}
-.z-ic-wave{opacity:0}.z-snd-on .z-ic-wave{opacity:1;animation:zWave 1.1s ease-in-out infinite}.z-snd-on .z-ic-mute{display:none}
-.z-snd-on [data-z="sound"]{background:#0077B6!important;color:#FFFFFF!important;border-color:#0077B6!important;box-shadow:0 0 0 4px rgba(61,180,240,.25)}
-@keyframes zWave{0%,100%{opacity:.35}50%{opacity:1}}
-.z-snd-on .z-core{animation-duration:1.4s}
-@media (max-width: 640px){
-.z-ci34{margin:-24px -22px 6px!important;width:calc(100% + 44px)!important}
-.z-ci48{margin:-22px -22px 6px!important;width:calc(100% + 44px)!important;height:200px}
-.z-ci32{margin:-22px -22px 6px!important;width:calc(100% + 44px)!important}
-.z-tools{gap:6px!important}
-}
-@media (prefers-reduced-motion: reduce){.z-photo img{animation:none}}
-</style>
 <script>(function(){var t=null;try{t=localStorage.getItem('zptk-theme')}catch(e){}if(t!=='day'&&t!=='night'){var h=new Date().getHours();t=(h>=7&&h<19)?'day':'night'}document.documentElement.classList.add('z-'+t);})();</script>
-<style>[hidden]{display:none!important}html{scroll-behavior:smooth;scroll-padding-top:84px}</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "Organization", "@id": "https://aasolo.github.io/zptk-site/#org", "name": "ООО «Завод программно-технических комплексов»", "alternateName": ["ЗПТК", "ООО «ЗПТК»"], "url": "https://aasolo.github.io/zptk-site/", "logo": "https://aasolo.github.io/zptk-site/logo.png", "email": "office@zptk.ru", "telephone": "+7 (383) 363-23-81", "foundingDate": "2005", "taxID": "5402001518", "description": "ЗПТК — инжиниринговая группа полного цикла. Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости: связь, логистика, энергетика. Собственные разработки на базе ИИ. EPCM-контракты.", "address": [{"@type": "PostalAddress", "streetAddress": "Красный проспект, д. 200, оф. 311", "addressLocality": "Новосибирск", "postalCode": "630049", "addressCountry": "RU"}, {"@type": "PostalAddress", "streetAddress": "ул. Вавилова, д. 69/75, оф. 719", "addressLocality": "Москва", "postalCode": "117335", "addressCountry": "RU"}], "areaServed": "RU", "knowsAbout": ["Инфраструктура связи", "Логистические центры", "Энергетика и АИИС КУЭ", "ЦОД и технологические сети", "Собственное ПО", "ИИ-агенты", "Сервис и предиктивная аналитика", "EPCM-контракты"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "WebSite", "name": "ЗПТК", "url": "https://aasolo.github.io/zptk-site/", "inLanguage": "ru"}</script>
+
+<!-- Яндекс.Метрика: укажите METRIKA_ID в _build/build.py, и счётчик подключится на всех страницах -->
 </head>
 <body>
-<div class="z-root" style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #0A2A42; background: #F4F7FA; min-width: 0;">
-
-<header style="position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,0.88); backdrop-filter: blur(14px); color: #0A2A42; border-bottom: 1px solid #CFDCE7;">
-<div style="max-width: 1280px; margin: 0 auto; padding: 16px 32px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
-<a href="index.html" style="display: flex; align-items: center; text-decoration: none;"><img class="z-logo-d" src="logo.png" alt="ЗПТК — Завод программно-технических комплексов" style="height: 46px; width: auto; display: block;"><img class="z-logo-n" src="logo-dark.png" alt="ЗПТК — Завод программно-технических комплексов" style="height: 46px; width: auto; display: block;"></a>
-<nav class="z-desk" aria-label="Основное меню" style="display: flex; flex-wrap: wrap; gap: 28px; font-size: 15px;">
-<a href="index.html" aria-current="page" style="color: #0077B6; text-decoration: none; font-weight: 600; border-bottom: 2px solid #008DD2; padding-bottom: 4px;">Главная</a>
-<a href="uslugi.html" style="color: #2C4356; text-decoration: none;">Услуги</a>
-<a href="proekty.html" style="color: #2C4356; text-decoration: none;">Наши проекты</a>
-<a href="it.html" style="color: #2C4356; text-decoration: none;">Сведения об IT-деятельности</a>
-<a href="kontakty.html" style="color: #2C4356; text-decoration: none;">Контактные данные</a>
+<div class="z-root">
+<a class="skip" href="#main">К содержанию</a>
+<header class="hdr"><div class="wrap hdr__in">
+<a class="hdr__logo" href="index.html" aria-label="ЗПТК — на главную"><img class="z-logo-d" src="logo.png" alt="ЗПТК — Завод программно-технических комплексов" width="169" height="44"><img class="z-logo-n" src="logo-dark.png" alt="ЗПТК — Завод программно-технических комплексов" width="169" height="44"></a>
+<nav class="hdr__nav" aria-label="Основное меню">
+<a href="o-kompanii.html">О компании</a>
+<a href="napravleniya.html">Направления</a>
+<a href="razrabotki.html">Разработки</a>
+<a href="partnery.html">Ориентиры</a>
+<a href="proekty.html">Проекты</a>
+<a href="kontakty.html">Контакты</a>
 </nav>
-<div class="z-desk" style="display: flex; flex-wrap: wrap; align-items: center; gap: 20px;">
-<a href="tel:+73833632381" style="color: #0A2A42; text-decoration: none; font-family: 'IBM Plex Mono', monospace; font-size: 15px; font-weight: 500;">+7 (383) 363-23-81</a>
-<a href="#contacts" class="z-btn" style="background: #0077B6; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 15px; padding: 12px 20px; border-radius: 40px; min-height: 44px; box-sizing: border-box; display: inline-flex; align-items: center; gap: 8px;">Обсудить проект <span class="z-arr" aria-hidden="true">→</span></a>
-</div>
-<div class="z-tools" style="display: flex; gap: 8px; align-items: center;">
-<button type="button" data-z="theme" class="z-tbtn" aria-label="Переключить дневную / вечернюю тему" title="Дневная / вечерняя тема" style="border: 1px solid #CFDCE7; background: #FFFFFF; color: #0A2A42;"><svg class="z-ic-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path></svg><svg class="z-ic-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"></circle><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
-<button type="button" data-z="sound" class="z-tbtn" aria-pressed="false" aria-label="Звук электричества" title="Звук электричества" style="border: 1px solid #CFDCE7; background: #FFFFFF; color: #0A2A42;"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"></path><path class="z-ic-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path><path class="z-ic-mute" d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></button>
-</div>
-<button type="button" class="z-burger" aria-label="Меню" aria-expanded="false" aria-controls="zMnav" id="zBurger" style="display: none; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid #CFDCE7; border-radius: 12px; background: #FFFFFF; color: #0A2A42; cursor: pointer; padding: 0;"><span class="z-ic-close" hidden><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5 L17 17 M17 5 L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span><span class="z-ic-open"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"></path></svg></span></button>
-</div>
-<nav hidden id="zMnav" class="z-mnav" aria-label="Мобильное меню" style="border-top: 1px solid #CFDCE7; background: #FFFFFF; padding: 8px 16px 20px; display: flex; flex-direction: column;">
-<a href="index.html" aria-current="page" style="padding: 14px 4px; font-size: 18px; color: #0077B6; font-weight: 600; text-decoration: none; border-bottom: 1px solid #E3ECF3;">Главная</a>
-<a href="uslugi.html" style="padding: 14px 4px; font-size: 18px; color: #0A2A42; text-decoration: none; border-bottom: 1px solid #E3ECF3;">Услуги</a>
-<a href="proekty.html" style="padding: 14px 4px; font-size: 18px; color: #0A2A42; text-decoration: none; border-bottom: 1px solid #E3ECF3;">Наши проекты</a>
-<a href="it.html" style="padding: 14px 4px; font-size: 18px; color: #0A2A42; text-decoration: none; border-bottom: 1px solid #E3ECF3;">Сведения об IT-деятельности</a>
-<a href="kontakty.html" style="padding: 14px 4px; font-size: 18px; color: #0A2A42; text-decoration: none; border-bottom: 1px solid #E3ECF3;">Контактные данные</a>
-<a href="tel:+73833632381" style="padding: 18px 4px 10px; font-family: 'IBM Plex Mono', monospace; font-size: 18px; color: #0A2A42; text-decoration: none;">+7 (383) 363-23-81</a>
-<a href="#contacts" style="margin-top: 6px; background: #0077B6; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 15px 20px; border-radius: 40px; text-align: center;">Обсудить проект</a>
+<div class="hdr__side">
+<a class="hdr__phone" href="tel:+73833632381">+7 (383) 363-23-81</a>
+<a class="btn btn--primary" href="prezentaciya.html">Презентация <span class="arr" aria-hidden="true">↓</span></a>
+<button type="button" data-z="theme" class="tbtn" aria-label="Переключить дневную / вечернюю тему" title="Дневная / вечерняя тема"><svg class="z-ic-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="z-ic-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+<button type="button" data-z="sound" class="tbtn" aria-pressed="false" aria-label="Звук электричества" title="Звук электричества"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path class="z-ic-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="z-ic-mute" d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+<button type="button" class="tbtn burger" aria-label="Меню" aria-expanded="false" aria-controls="zMnav" id="zBurger"><span class="z-ic-close" hidden><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5 L17 17 M17 5 L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="z-ic-open"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
+</div></div>
+<nav hidden id="zMnav" class="mnav" aria-label="Мобильное меню">
+<a href="o-kompanii.html">О компании</a>
+<a href="napravleniya.html">Направления</a>
+<a href="razrabotki.html">Разработки</a>
+<a href="partnery.html">Ориентиры</a>
+<a href="proekty.html">Проекты</a>
+<a href="kontakty.html">Контакты</a>
+<a href="tel:+73833632381" class="mono">+7 (383) 363-23-81</a>
+<a class="btn btn--primary" href="prezentaciya.html">Скачать презентацию</a>
 </nav>
 </header>
-
-<section id="top" style="background: #0A2A42; color: #F4F7FA; position: relative; overflow: hidden;">
-<svg aria-hidden="true" width="100%" height="100%" style="position: absolute; inset: 0; opacity: 0.16;"><defs><pattern id="zgrid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0 H0 V48" fill="none" stroke="#4A7FA6" stroke-width="1"></path></pattern></defs><rect width="100%" height="100%" fill="url(#zgrid)"></rect></svg>
-<div style="position: relative; max-width: 1280px; margin: 0 auto; padding: 88px 32px 72px; display: flex; flex-direction: column; gap: 56px;">
-<div style="display: flex; flex-wrap: wrap; gap: 48px; align-items: center;">
-<div style="flex: 999 1 540px; min-width: 0; display: flex; flex-direction: column; gap: 28px;">
-<span class="z-rise" style="display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #C5D8E6; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid #2D6087; border-radius: 40px; padding: 8px 16px;"><span class="z-live" style="width: 8px; height: 8px; border-radius: 50%; background: #3DB4F0;"></span>Инжиниринг в энергетике · с 2005 года</span>
-<h1 class="z-rise" style="animation-delay: .12s; margin: 0; font-size: clamp(40px, 5.4vw, 74px); line-height: 1.04; font-weight: 600; letter-spacing: -0.025em;">Автоматизируем учёт <span class="z-hl">энергоресурсов</span> — от проекта до сдачи объекта</h1>
-<p class="z-rise" style="animation-delay: .24s; margin: 0; font-size: 20px; line-height: 1.55; color: #C5D8E6; max-width: 640px;">Создаём и модернизируем АИИС КУЭ, телемеханику, технологические сети и связь на отечественном оборудовании, разрабатываем собственное ПО и выполняем работы «под ключ» — от проекта до сервиса.</p>
-<div class="z-rise" style="animation-delay: .36s; display: flex; flex-wrap: wrap; gap: 14px; margin-top: 4px;">
-<a href="#contacts" class="z-btn" style="background: #0077B6; color: #FFFFFF; text-decoration: none; font-weight: 600; font-size: 17px; padding: 17px 30px; border-radius: 40px; display: inline-flex; gap: 10px; align-items: center;">Оставить заявку <span class="z-arr" aria-hidden="true">→</span></a>
-<a href="proekty.html" class="z-btn" style="color: #F4F7FA; text-decoration: none; font-weight: 500; font-size: 17px; padding: 16px 29px; border-radius: 40px; border: 1px solid #4A7FA6; display: inline-flex; gap: 10px; align-items: center;">Наши проекты <span class="z-arr" aria-hidden="true">→</span></a>
+<main id="main">
+<section class="hero" id="top"><div class="ai-bg" aria-hidden="true"></div><svg class="ai-net" viewBox="0 0 720 420" aria-hidden="true"><line class="l" x1="80" y1="60" x2="220" y2="30"/><line class="l" x1="220" y1="30" x2="360" y2="90"/><line class="l" x1="360" y1="90" x2="520" y2="40"/><line class="l" x1="520" y1="40" x2="640" y2="130"/><line class="l" x1="80" y1="60" x2="140" y2="190"/><line class="l" x1="220" y1="30" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="460" y2="200"/><line class="l" x1="520" y1="40" x2="460" y2="200"/><line class="l" x1="640" y1="130" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="300" y2="220"/><line class="l" x1="300" y1="220" x2="460" y2="200"/><line class="l" x1="460" y1="200" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="60" y2="320"/><line class="l" x1="300" y1="220" x2="220" y2="360"/><line class="l" x1="300" y1="220" x2="400" y2="330"/><line class="l" x1="460" y1="200" x2="400" y2="330"/><line class="l" x1="600" y1="260" x2="560" y2="380"/><line class="l" x1="60" y1="320" x2="220" y2="360"/><line class="l" x1="220" y1="360" x2="400" y2="330"/><line class="l" x1="400" y1="330" x2="560" y2="380"/><line class="l" x1="560" y1="380" x2="680" y2="350"/><line class="l" x1="600" y1="260" x2="680" y2="350"/><circle class="n p" cx="80" cy="60" r="6" style="animation-delay:0.0s"/><circle class="n" cx="220" cy="30" r="4" style="animation-delay:-0.4s"/><circle class="n" cx="360" cy="90" r="4" style="animation-delay:-0.8s"/><circle class="n p" cx="520" cy="40" r="4" style="animation-delay:-1.2s"/><circle class="n" cx="640" cy="130" r="6" style="animation-delay:-1.6s"/><circle class="n" cx="140" cy="190" r="4" style="animation-delay:-2.0s"/><circle class="n p" cx="300" cy="220" r="4" style="animation-delay:-2.4s"/><circle class="n" cx="460" cy="200" r="4" style="animation-delay:-2.8s"/><circle class="n" cx="600" cy="260" r="6" style="animation-delay:-3.2s"/><circle class="n p" cx="60" cy="320" r="4" style="animation-delay:-3.6s"/><circle class="n" cx="220" cy="360" r="4" style="animation-delay:-4.0s"/><circle class="n" cx="400" cy="330" r="4" style="animation-delay:-4.4s"/><circle class="n p" cx="560" cy="380" r="6" style="animation-delay:-4.8s"/><circle class="n" cx="680" cy="350" r="4" style="animation-delay:-5.2s"/></svg>
+<div class="wrap hero__in"><div class="hero__row">
+<div class="hero__text">
+<span class="hero__badge z-rise"><span class="dot z-live"></span>Инжиниринговая группа полного цикла · с 2005 года</span>
+<h1 class="h1 z-rise" style="animation-delay:.12s">Инжиниринг полного цикла для критической инфраструктуры</h1>
+<p class="hero__sub z-rise" style="animation-delay:.2s">Связь. Логистика. Энергетика. Собственное&nbsp;ПО. ИИ-агенты. EPCM.</p>
+<p class="lead z-rise" style="animation-delay:.28s">Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости. Развиваем собственные разработки на базе ИИ и ведём проекты по EPCM-контрактам.</p>
+<div class="actions z-rise" style="animation-delay:.36s"><a class="btn btn--primary btn--lg" href="zptk-prezentaciya.pdf" download><svg class="" width="20" height="20" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 V26 M11 17 L20 26 L29 17 M6 34 H34"/></svg>Скачать презентацию <small>PDF, 1,1 МБ</small></a><a class="btn btn--ghost btn--lg" href="napravleniya.html">8 направлений <span class="arr" aria-hidden="true">→</span></a></div>
 </div>
-</div>
-
-<div style="flex: 1 1 400px; min-width: 0; display: flex; justify-content: center;">
-<div class="z-rise" style="animation-delay: .2s; position: relative; width: 100%; max-width: 520px; aspect-ratio: 1 / 1;">
-<svg viewBox="0 0 520 520" width="100%" height="100%" role="img" aria-label="Эмблема ЗПТК в движении: ядро с молнией и три орбиты" style="display: block; overflow: visible;">
-<circle cx="260" cy="260" r="200" fill="#0F3654" opacity="0.55"></circle>
-<circle class="z-rip" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"></circle>
-<circle class="z-rip z-rip2" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"></circle>
-<circle class="z-rip z-rip3" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"></circle>
+<div class="hero__art"><div class="z-rise" style="animation-delay:.2s;position:relative;width:100%;max-width:500px;aspect-ratio:1/1">
+<svg viewBox="0 0 520 520" width="100%" height="100%" role="img" aria-label="Эмблема ЗПТК: ядро с молнией и три орбиты" style="display:block;overflow:visible">
+<circle cx="260" cy="260" r="200" fill="#0F3654" opacity="0.55"/>
+<circle class="z-rip" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"/>
+<circle class="z-rip z-rip2" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"/>
+<circle class="z-rip z-rip3" cx="260" cy="260" r="52" fill="none" stroke="#3DB4F0" stroke-width="1.5"/>
 <g class="z-orbits">
-<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75"></ellipse>
-<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75" transform="rotate(60 260 260)"></ellipse>
-<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75" transform="rotate(120 260 260)"></ellipse>
-<circle class="z-e z-e1" r="8" fill="#FFFFFF"></circle>
-<circle class="z-e z-e2" r="8" fill="#FFFFFF"></circle>
-<circle class="z-e z-e3" r="8" fill="#FFFFFF"></circle>
-<circle class="z-e z-e4" r="5" fill="#7FD0F7"></circle>
+<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75"/>
+<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75" transform="rotate(60 260 260)"/>
+<ellipse cx="260" cy="260" rx="230" ry="88" fill="none" stroke="#3DB4F0" stroke-width="2.5" opacity="0.75" transform="rotate(120 260 260)"/>
+<circle class="z-e z-e1" r="8" fill="#FFFFFF"/><circle class="z-e z-e2" r="8" fill="#FFFFFF"/><circle class="z-e z-e3" r="8" fill="#FFFFFF"/>
 </g>
-<g class="z-core">
-<circle cx="260" cy="260" r="56" fill="#008DD2"></circle>
-<circle cx="260" cy="260" r="56" fill="none" stroke="#FFFFFF" stroke-width="3"></circle>
-<path d="M270 220 L242 266 H262 L250 302 L282 250 H262 Z" fill="#FFFFFF"></path>
-</g>
-</svg>
-<span class="z-chip" style="position: absolute; left: 2%; top: 14%; font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: rgba(10,42,66,0.85); border: 1px solid #2D6087; color: #E3EEF6; padding: 8px 12px; border-radius: 40px;">АИИС КУЭ</span>
-<span class="z-chip" style="animation-delay: -1.5s; position: absolute; right: 0; top: 26%; font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: rgba(10,42,66,0.85); border: 1px solid #2D6087; color: #E3EEF6; padding: 8px 12px; border-radius: 40px;">ТСПД</span>
-<span class="z-chip" style="animation-delay: -3s; position: absolute; left: 6%; bottom: 18%; font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: rgba(10,42,66,0.85); border: 1px solid #2D6087; color: #E3EEF6; padding: 8px 12px; border-radius: 40px;">ТМиС</span>
-<span class="z-chip" style="animation-delay: -4s; position: absolute; right: 6%; bottom: 8%; font-family: 'IBM Plex Mono', monospace; font-size: 13px; background: rgba(10,42,66,0.85); border: 1px solid #2D6087; color: #E3EEF6; padding: 8px 12px; border-radius: 40px;">ВКС</span>
+<g class="z-core"><circle cx="260" cy="260" r="56" fill="#008DD2"/><circle cx="260" cy="260" r="56" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+<path d="M270 220 L242 266 H262 L250 302 L282 250 H262 Z" fill="#FFFFFF"/></g>
+</svg><span class="z-chip" style="animation-delay:0s;position:absolute;left:2%;top:14%;font-family:var(--mono);font-size:13px;background:rgba(10,42,66,.85);border:1px solid #2D6087;color:#E3EEF6;padding:8px 12px;border-radius:40px">Связь</span><span class="z-chip" style="animation-delay:-1.5s;position:absolute;right:0;top:26%;font-family:var(--mono);font-size:13px;background:rgba(10,42,66,.85);border:1px solid #2D6087;color:#E3EEF6;padding:8px 12px;border-radius:40px">Энергетика</span><span class="z-chip" style="animation-delay:-3s;position:absolute;left:6%;bottom:18%;font-family:var(--mono);font-size:13px;background:rgba(10,42,66,.85);border:1px solid #2D6087;color:#E3EEF6;padding:8px 12px;border-radius:40px">Логистика</span><span class="z-chip" style="animation-delay:-4s;position:absolute;right:6%;bottom:8%;font-family:var(--mono);font-size:13px;background:rgba(10,42,66,.85);border:1px solid #2D6087;color:#E3EEF6;padding:8px 12px;border-radius:40px">ИИ-агенты</span></div></div>
 </div>
-</div>
-</div>
+<div class="z-rise" style="animation-delay:.5s"><dl class="stats"><div><dt>точек учёта в реализованных проектах</dt><dd><span data-count="100000">100 000</span>+</dd></div><div><dt>направлений для заказчиков</dt><dd><span data-count="8">8</span></dd></div><div><dt>ПТК ЕЦУД, запись № 29851</dt><dd class="sm">Реестр российского ПО</dd></div><div><dt>мировые ориентиры наших направлений</dt><dd class="sm">Motorola, Cisco, KNAPP, SSI Schäfer</dd></div></dl></div>
+</div></section>
 
-<dl class="z-rise" style="animation-delay: .5s; margin: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1px; background: #1F4D70; border: 1px solid #1F4D70; border-radius: 6px; overflow: hidden;">
-<div style="background: #0A2A42; padding: 26px 28px; display: flex; flex-direction: column-reverse; gap: 6px;"><dt style="color: #A6C0D4; font-size: 15px;">реализованных крупных проектов</dt><dd style="margin: 0; font-size: 52px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums;"><span data-count="70">70</span>+</dd></div>
-<div style="background: #0A2A42; padding: 26px 28px; display: flex; flex-direction: column-reverse; gap: 6px;"><dt style="color: #A6C0D4; font-size: 15px;">лет на рынке инжиниринга</dt><dd style="margin: 0; font-size: 52px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums;"><span data-count="20">20</span>+</dd></div>
-<div style="background: #0A2A42; padding: 26px 28px; display: flex; flex-direction: column-reverse; gap: 6px;"><dt style="color: #A6C0D4; font-size: 15px;">точек учёта в одном проекте</dt><dd style="margin: 0; font-size: 52px; line-height: 1; font-weight: 600; font-variant-numeric: tabular-nums;"><span data-count="40000">40 000</span></dd></div>
-<div style="background: #0A2A42; padding: 26px 28px; display: flex; flex-direction: column-reverse; gap: 6px;"><dt style="color: #A6C0D4; font-size: 15px;">млн ₽ собственных инвестиций</dt><dd style="margin: 0; font-size: 52px; line-height: 1; font-weight: 600; color: #3DB4F0; font-variant-numeric: tabular-nums;"><span data-count="200">200</span>+</dd></div>
-</dl>
-</div>
-</section>
+<section class="sec" id="napravleniya"><div class="wrap stack-lg">
+<div class="sec-head reveal"><div><span class="eyebrow">Чем мы занимаемся</span>
+<h2 class="h2">Четыре блока, восемь направлений</h2>
+<p class="lead">От проекта и стройки до собственного ПО и сервиса: одна группа отвечает за весь жизненный цикл объекта.</p></div>
+<a class="link-arr" href="napravleniya.html">Все направления <span class="arr" aria-hidden="true">→</span></a></div>
+<div class="grid-4"><article class="card block reveal"><svg class="ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="6" width="11" height="11" rx="2"/><rect x="23" y="6" width="11" height="11" rx="2"/><rect x="6" y="23" width="11" height="11" rx="2"/><rect x="23" y="23" width="11" height="11" rx="2"/></svg>
+<span class="block__num">01 · 4 направления</span>
+<h3 class="h3">Инфраструктура</h3><p>Проектируем и строим связь, логистические центры, энергетические и вычислительные объекты, которые работают при любом отказе.</p><ul class="block__list"><li><a href="napravleniya/svyaz.html">Инфраструктура связи</a></li><li><a href="napravleniya/logistika.html">Логистические центры</a></li><li><a href="napravleniya/energetika.html">Энергетика и АИИС КУЭ</a></li><li><a href="napravleniya/cod.html">ЦОД и технологические сети</a></li></ul></article><article class="card block reveal"><svg class="ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 12 L6 20 L14 28 M26 12 L34 20 L26 28 M23 8 L17 32"/></svg>
+<span class="block__num">02 · 2 направления</span>
+<h3 class="h3">Собственные разработки</h3><p>ПТК ЕЦУД в реестре российского ПО и ИИ-агенты, которые работают на данных заказчика внутри защищённого контура.</p><ul class="block__list"><li><a href="napravleniya/sobstvennoe-po.html">Собственное ПО</a></li><li><a href="napravleniya/ii-agenty.html">ИИ-агенты</a></li></ul></article><article class="card block reveal"><svg class="ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 22 H11 L15 10 L21 32 L25 18 L28 22 H36"/></svg>
+<span class="block__num">03 · 1 направлений</span>
+<h3 class="h3">Сервис и предиктивная аналитика</h3><p>Обслуживаем системы штатным персоналом и предсказываем отказы и потери до того, как они ударят по деньгам.</p><ul class="block__list"><li><a href="napravleniya/servis.html">Сервис и предиктивная аналитика</a></li></ul></article><article class="card block reveal"><svg class="ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 L36 13 L20 21 L4 13 Z M4 20 L20 28 L36 20 M4 27 L20 35 L36 27"/></svg>
+<span class="block__num">04 · 1 направлений</span>
+<h3 class="h3">EPCM</h3><p>Ведём проект целиком: инжиниринг, закупки, управление стройкой и вводом. Одна ответственность за результат.</p><ul class="block__list"><li><a href="napravleniya/epcm.html">EPCM-контракты</a></li></ul></article></div>
+</div></section>
 
-<section id="projects" aria-label="Заказчики и проекты" class="z-band" style="background: #0077B6; color: #FFFFFF; overflow: hidden; border-top: 1px solid #008DD2;">
-<div class="z-track" style="padding: 20px 0; font-size: 17px; font-weight: 500; white-space: nowrap;">
-<span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Дагэнерго · Россети Северный Кавказ</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">36 000 точек учёта</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Ростелеком · МРСК Сибири</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">40 000 точек · энергосервис 5 лет</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Красноярскэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">7 000 точек · окупаемость 1,5 года</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Алтайэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">потери −45%</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Мосэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">АИИС КУЭ ОРЭМ для 16 ТЭЦ</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>ФСК ЕЭС · ПС 500 кВ «Кубанская»</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">ПНР РЗА и АСУ ТП</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>ЕЦУД в реестре российского ПО</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">запись № 29851</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Дагэнерго · Россети Северный Кавказ</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">36 000 точек учёта</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Ростелеком · МРСК Сибири</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">40 000 точек · энергосервис 5 лет</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Красноярскэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">7 000 точек · окупаемость 1,5 года</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Алтайэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">потери −45%</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>Мосэнерго</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">АИИС КУЭ ОРЭМ для 16 ТЭЦ</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>ФСК ЕЭС · ПС 500 кВ «Кубанская»</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">ПНР РЗА и АСУ ТП</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span><span style="display: inline-flex; align-items: center; gap: 28px; padding-right: 28px;"><span>ЕЦУД в реестре российского ПО</span><span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #D6ECFA;">запись № 29851</span><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M8 0 L2 8 H6 L5 14 L12 5 H8 Z" fill="#FFFFFF" opacity="0.8"></path></svg></span>
-</div>
-</section>
+<section class="sec sec--dark"><div class="ai-bg" aria-hidden="true"></div><svg class="ai-net" viewBox="0 0 720 420" aria-hidden="true"><line class="l" x1="80" y1="60" x2="220" y2="30"/><line class="l" x1="220" y1="30" x2="360" y2="90"/><line class="l" x1="360" y1="90" x2="520" y2="40"/><line class="l" x1="520" y1="40" x2="640" y2="130"/><line class="l" x1="80" y1="60" x2="140" y2="190"/><line class="l" x1="220" y1="30" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="460" y2="200"/><line class="l" x1="520" y1="40" x2="460" y2="200"/><line class="l" x1="640" y1="130" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="300" y2="220"/><line class="l" x1="300" y1="220" x2="460" y2="200"/><line class="l" x1="460" y1="200" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="60" y2="320"/><line class="l" x1="300" y1="220" x2="220" y2="360"/><line class="l" x1="300" y1="220" x2="400" y2="330"/><line class="l" x1="460" y1="200" x2="400" y2="330"/><line class="l" x1="600" y1="260" x2="560" y2="380"/><line class="l" x1="60" y1="320" x2="220" y2="360"/><line class="l" x1="220" y1="360" x2="400" y2="330"/><line class="l" x1="400" y1="330" x2="560" y2="380"/><line class="l" x1="560" y1="380" x2="680" y2="350"/><line class="l" x1="600" y1="260" x2="680" y2="350"/><circle class="n p" cx="80" cy="60" r="6" style="animation-delay:0.0s"/><circle class="n" cx="220" cy="30" r="4" style="animation-delay:-0.4s"/><circle class="n" cx="360" cy="90" r="4" style="animation-delay:-0.8s"/><circle class="n p" cx="520" cy="40" r="4" style="animation-delay:-1.2s"/><circle class="n" cx="640" cy="130" r="6" style="animation-delay:-1.6s"/><circle class="n" cx="140" cy="190" r="4" style="animation-delay:-2.0s"/><circle class="n p" cx="300" cy="220" r="4" style="animation-delay:-2.4s"/><circle class="n" cx="460" cy="200" r="4" style="animation-delay:-2.8s"/><circle class="n" cx="600" cy="260" r="6" style="animation-delay:-3.2s"/><circle class="n p" cx="60" cy="320" r="4" style="animation-delay:-3.6s"/><circle class="n" cx="220" cy="360" r="4" style="animation-delay:-4.0s"/><circle class="n" cx="400" cy="330" r="4" style="animation-delay:-4.4s"/><circle class="n p" cx="560" cy="380" r="6" style="animation-delay:-4.8s"/><circle class="n" cx="680" cy="350" r="4" style="animation-delay:-5.2s"/></svg><div class="wrap stack-lg" style="position:relative">
+<div class="sec-head reveal"><div><span class="eyebrow">Как работают наши решения</span>
+<h2 class="h2">Сигнал → решение → действие</h2>
+<p class="lead">Каждая система, которую мы строим, замыкает этот контур: данные с объекта превращаются в действие раньше, чем отказ превратится в убыток.</p></div></div>
+<div class="flow" role="group" aria-label="Схема сигнал, решение, действие"><div class="flow__step"><span class="flow__k">Сигнал</span><span class="flow__t">Данные с объекта</span><p>Приборы учёта, каналы связи, складская автоматика, журналы событий</p></div><div class="flow__arr" aria-hidden="true"><svg viewBox="0 0 56 20"><path d="M2 10 H46"/><path class="head" d="M42 4 L50 10 L42 16"/></svg></div><div class="flow__step flow__step--core"><span class="flow__k">Решение</span><span class="flow__t">Собственное ПО и ИИ</span><p>ЕЦУД, предиктивная аналитика и ИИ-агенты в защищённом контуре</p></div><div class="flow__arr" aria-hidden="true"><svg viewBox="0 0 56 20"><path d="M2 10 H46"/><path class="head" d="M42 4 L50 10 L42 16"/></svg></div><div class="flow__step"><span class="flow__k">Действие</span><span class="flow__t">Результат для заказчика</span><p>Резерв включён, потери найдены, бригада выехала до аварии</p></div></div>
+</div></section>
 
-<section id="services" style="max-width: 1280px; margin: 0 auto; padding: 120px 32px; display: flex; flex-direction: column; gap: 56px;">
-<div class="z-reveal" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px;">
-<div style="display: flex; flex-direction: column; gap: 16px; max-width: 760px;">
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">01 — Ключевые направления</span>
-<h2 style="margin: 0; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.08; font-weight: 600; letter-spacing: -0.015em;">Работы «под ключ» на отечественном оборудовании и ПО</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #3A4B59;">ПИР, поставка, СМР, ПНР и сервис — своими силами, без генподрядчика между нами и заказчиком.</p>
-</div>
-<a href="uslugi.html" class="z-btn" style="font-weight: 600; font-size: 16px; text-decoration: none; display: inline-flex; gap: 8px; align-items: center; color: #0077B6;">Все услуги <span class="z-arr" aria-hidden="true">→</span></a>
-</div>
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 20px;">
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><circle cx="20" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><circle cx="8" cy="31" r="4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><circle cx="32" cy="31" r="4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></circle><path d="M18 12.5 L10 27.5 M22 12.5 L30 27.5 M12 31 H28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">ELTEX</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">Технологическая сеть передачи данных</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">ТСПД на базе оборудования ELTEX: архитектура на MPLS, маршрутизаторы и коммутаторы российского производства.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><path d="M4 22 H11 L15 10 L21 32 L25 18 L28 22 H36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">ГОСАН</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">РАС и ТМиС</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Модернизация систем регистрации аварийных событий и телемеханики нижнего и верхнего уровней на базе отечественного производителя ГОСАН.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><path d="M12 6 L16 6 L18 13 L14.5 15.5 A16 16 0 0 0 24.5 25.5 L27 22 L34 24 V28 A4 4 0 0 1 30 32 A24 24 0 0 1 8 10 A4 4 0 0 1 12 6 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">ELTEX</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">ТТС и ОДТС</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Технологическая и оперативно-диспетчерская телефонная связь на отечественном оборудовании ELTEX.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><rect x="7" y="5" width="26" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect><rect x="7" y="16" width="26" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect><rect x="7" y="27" width="26" height="9" rx="2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M12 9.5 H13 M12 20.5 H13 M12 31.5 H13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">Ядро · Depo · Rikor</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">ЦОД и серверное оборудование</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Проектирование и настройка центров обработки данных на оборудовании отечественных производителей.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><rect x="6" y="5" width="28" height="30" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M12 22 A8 8 0 0 1 28 22 M20 22 L25 16 M12 29 H28" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">ЕЦУД · Телескоп · Пирамида · Энергосфера</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">АИИС КУЭ</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Создание и модернизация систем коммерческого учёта электроэнергии на отечественном программном обеспечении, включая наш ПТК ЕЦУД.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><rect x="4" y="10" width="22" height="20" rx="3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></rect><path d="M26 17 L36 11 V29 L26 23 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">Протей · IVA · Vinteo · TrueConf</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">ВКС</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Видеоконференцсвязь на базе отечественных вендоров: терминалы, серверы и устройства отображения.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><path d="M20 4 L35 12 V28 L20 36 L5 28 V12 Z M5 12 L20 20 L35 12 M20 20 V36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">LightCom · RDW · Rikor · Aquarius · Гравитон · Бештау</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">Поставка оборудования</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Поставка ИТ- и связевого оборудования российских вендоров под задачи объекта.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><path d="M25 6 A8 8 0 0 0 16 16 L5 27 A3 3 0 0 0 9 31 L20 20 A8 8 0 0 0 30 11 L25 16 L21 15 L20 11 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">ТМиС · АИИС КУЭ · VoIP · СКС · КИВС</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">Сервисное обслуживание</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Обслуживание систем штатным квалифицированным персоналом компании.</p></article>
-<article class="z-card z-reveal" style="background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 8px; overflow: hidden; padding: 34px 30px; display: flex; flex-direction: column; gap: 14px; min-height: 250px;">
-<svg class="z-ico" width="40" height="40" viewBox="0 0 40 40" aria-hidden="true" style="color: #0A2A42;"><path d="M4 16 L20 6 L36 16 V35 H4 Z M10 35 V22 H30 V35 M10 27 H30" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: #4A5A67;">Axelot · Wi-Fi</span><h3 style="margin: 0; font-size: 24px; font-weight: 600;">Логистические склады</h3><p style="margin: 0; font-size: 16px; line-height: 1.6; color: #3A4B59;">Создание складов на отечественном ПО Axelot под требования заказчика, с покрытием Wi-Fi.</p></article>
-</div>
-</section>
+<section class="sec sec--dark" style="padding-top:0"><div class="wrap stack-lg" style="position:relative">
+<div class="sec-head reveal"><div><span class="eyebrow">Собственные разработки</span>
+<h2 class="h2">ПО в реестре и ИИ-агенты</h2></div>
+<a class="link-arr" href="razrabotki.html">Все разработки <span class="arr" aria-hidden="true">→</span></a></div>
+<div class="grid-4"><a class="card card--dark reveal" href="razrabotki.html#ecud"><span class="status status--reg">В реестре ПО</span>
+<h3 class="h3" style="color:#fff">ПТК ЕЦУД</h3><p>Программно-технический комплекс для коммерческого учёта электроэнергии и энергоресурсов. Единый центр учётных данных собирает всю нормативно-справочную информацию, по которой выполняются процедуры учёта.</p><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a><a class="card card--dark reveal" href="razrabotki.html#ii-agenty">
+<h3 class="h3" style="color:#fff">ИИ-агенты «Цифровой инженер» и «Страж качества»</h3><p>Агенты, которые работают рядом с инженером: отвечают по нормативам и проектам, проверяют документацию и разбирают журналы событий. Модели работают в защищённом контуре.</p><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a><a class="card card--dark reveal" href="razrabotki.html#analiz-poter">
+<h3 class="h3" style="color:#fff">ИИ-анализ потерь</h3><p>Модель на данных ЕЦУД находит подозрительные профили потребления раньше, чем их заметит человек: майнинг-фермы, скрытые подключения и «обнаглевших царьков».</p><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a></div></div></section>
 
-<section id="product" style="background: #0A2A42; color: #F4F7FA; position: relative; overflow: hidden;">
-<div style="max-width: 1280px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 64px;">
-<div class="z-reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #3DB4F0; letter-spacing: 0.08em; text-transform: uppercase;">02 — Собственная разработка</span>
-<h2 style="margin: 0; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.08; font-weight: 600; letter-spacing: -0.015em;">ПТК ЕЦУД — единый центр учётных данных</h2>
-<p style="margin: 0; font-size: 18px; line-height: 1.6; color: #C5D8E6;">Программное обеспечение АИИС КУЭ для коммерческого учёта электроэнергии и энергоресурсов. Собирает в одном месте всю нормативно-справочную информацию, по которой выполняются процедуры учёта. Включено в реестр российского ПО.</p>
-<ul style="margin: 8px 0 0; padding: 0; list-style: none; display: flex; flex-direction: column; border-top: 1px solid #1F4D70;">
-<li style="padding: 18px 0; border-bottom: 1px solid #1F4D70; display: flex; gap: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; color: #3DB4F0;">01</span><span>Программный комплекс «ЕЦУД»</span></li>
-<li style="padding: 18px 0; border-bottom: 1px solid #1F4D70; display: flex; gap: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; color: #3DB4F0;">02</span><span>Синхронизация с БД «Альфа-Центр», «РМС», «РадиоАксесс», «МИР», «Энергосфера»</span></li>
-<li style="padding: 18px 0; border-bottom: 1px solid #1F4D70; display: flex; gap: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; color: #3DB4F0;">03</span><span>Синхронизация с УСПД и приборами учёта разных производителей</span></li>
-<li style="padding: 18px 0; border-bottom: 1px solid #1F4D70; display: flex; gap: 20px;"><span style="font-family: 'IBM Plex Mono', monospace; color: #3DB4F0;">04</span><span>Модуль визуализации</span></li>
-</ul>
-<a href="uslugi.html" class="z-btn" style="align-self: flex-start; margin-top: 8px; color: #F4F7FA; text-decoration: none; font-weight: 500; font-size: 17px; padding: 15px 27px; border-radius: 40px; border: 1px solid #4A7FA6; display: inline-flex; gap: 10px; align-items: center;">Подробное описание продукта <span class="z-arr" aria-hidden="true">→</span></a>
-</div>
-<div class="z-reveal" style="flex: 1 1 460px; min-width: 0; display: flex; flex-direction: column; align-self: center;">
-<div style="border: 1px solid #1F4D70; border-radius: 10px; padding: 28px; display: flex; flex-direction: column; gap: 14px; background: #0F3654;">
-<div style="display: flex; justify-content: space-between; align-items: center;"><span style="font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A6C0D4; text-transform: uppercase; letter-spacing: 0.08em;">Поток данных</span><span style="display: inline-flex; align-items: center; gap: 8px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #A6C0D4;"><span class="z-live" style="width: 8px; height: 8px; border-radius: 50%; background: #3DB4F0;"></span>онлайн</span></div>
-<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; font-size: 14px;">
-<div style="border: 1px solid #2D6087; border-radius: 6px; padding: 12px; text-align: center;">Приборы учёта</div>
-<div style="border: 1px solid #2D6087; border-radius: 6px; padding: 12px; text-align: center;">УСПД</div>
-<div style="border: 1px solid #2D6087; border-radius: 6px; padding: 12px; text-align: center;">Внешние БД</div>
-</div>
-<svg aria-hidden="true" width="100%" height="40" viewBox="0 0 300 40" preserveAspectRatio="none"><path class="z-flow" d="M50 0 V20 H150 M250 0 V20 H150 M150 0 V40" fill="none" stroke="#3DB4F0" stroke-width="2"></path></svg>
-<div class="z-core" style="background: #008DD2; color: #FFFFFF; border-radius: 8px; padding: 24px; text-align: center; display: flex; flex-direction: column; gap: 4px;"><span style="font-weight: 700; font-size: 24px;">ПТК ЕЦУД</span><span style="font-size: 14px;">единая нормативно-справочная база</span></div>
-<svg aria-hidden="true" width="100%" height="40" viewBox="0 0 300 40" preserveAspectRatio="none"><path class="z-flow" d="M150 0 V20 H50 V40 M150 20 H250 V40" fill="none" stroke="#3DB4F0" stroke-width="2"></path></svg>
-<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; font-size: 14px;">
-<div style="border: 1px solid #2D6087; border-radius: 6px; padding: 12px; text-align: center;">Коммерческий учёт</div>
-<div style="border: 1px solid #2D6087; border-radius: 6px; padding: 12px; text-align: center;">Визуализация и отчёты</div>
-</div>
-</div>
-</div>
-</div>
-</section>
+<section class="sec sec--tight"><div class="wrap stack">
+<div class="sec-head reveal"><div><span class="eyebrow">Ориентиры</span>
+<h2 class="h2">Равняемся на лидеров мирового рынка</h2></div>
+<a class="link-arr" href="partnery.html">Все ориентиры и технологии <span class="arr" aria-hidden="true">→</span></a></div>
+<ul class="chips"><li class="chip">Motorola Solutions</li><li class="chip">Cisco Systems</li><li class="chip">KNAPP</li><li class="chip">SSI Schäfer</li><li class="chip">ГК «FIRST»</li><li class="chip">AXELOT</li><li class="chip">МТС</li><li class="chip">Ростелеком</li><li class="chip">Сервионика</li><li class="chip">Прософт-Системы</li><li class="chip">ИНБРЭС</li><li class="chip">Bechtel</li><li class="chip">Fluor</li></ul>
+</div></section>
 
-<section style="max-width: 1280px; margin: 0 auto; padding: 120px 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 24px;">
-<article class="z-card z-reveal" style="border: 1px solid #CFDCE7; border-radius: 10px; overflow: hidden; padding: 48px 40px; display: flex; flex-direction: column; gap: 20px; background: #FFFFFF;">
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">03 — Энергосервис</span>
-<h2 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600;">Модернизация без затрат заказчика на старте</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3A4B59;">Основное направление компании — энергосервисные контракты. Мы вкладываем собственные средства (более 200 млн ₽) и обеспечиваем возврат инвестиций за счёт достигнутой экономии.</p>
-</article>
-<article class="z-card z-reveal" style="border: 1px solid #CFDCE7; border-radius: 10px; overflow: hidden; padding: 48px 40px; display: flex; flex-direction: column; gap: 20px; background: #FFFFFF;">
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">04 — Оборудование</span>
-<h2 style="margin: 0; font-size: 34px; line-height: 1.15; font-weight: 600;">Реализуем проекты на любом оборудовании</h2>
-<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #3A4B59;">Партнёрство с ведущими производителями позволяет подобрать состав оборудования под бюджет, требования сетевой организации и существующую инфраструктуру объекта.</p>
-</article>
-</section>
+<section class="sec sec--alt"><div class="wrap stack-lg">
+<div class="sec-head reveal"><div><span class="eyebrow">Проекты</span>
+<h2 class="h2">Кейсы: задача → решение → результат</h2>
+<p class="lead">Более 70 крупных проектов для сетевых, генерирующих и телеком-компаний. Названия заказчиков в кейсах скрыты по NDA.</p></div>
+<a class="link-arr" href="proekty.html">Все проекты <span class="arr" aria-hidden="true">→</span></a></div>
+<div class="grid-4"><a class="card reveal" href="proekty.html#case-1"><span class="card__tag">Кейс 01 · Энергетика и АИИС КУЭ</span>
+<h3 class="h3" style="font-size:21px">АИИС КУЭ на 120 000 точек для распределительной сетевой компании</h3><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a><a class="card reveal" href="proekty.html#case-2"><span class="card__tag">Кейс 02 · Логистические центры</span>
+<h3 class="h3" style="font-size:21px">WMS/WCS для логистического центра 50 000 м²</h3><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a><a class="card reveal" href="proekty.html#case-3"><span class="card__tag">Кейс 03 · Инфраструктура связи</span>
+<h3 class="h3" style="font-size:21px">Двойное резервирование связи для критической инфраструктуры</h3><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a><a class="card reveal" href="proekty.html#case-4"><span class="card__tag">Кейс 04 · Сервис и предиктивная аналитика</span>
+<h3 class="h3" style="font-size:21px">Предиктивный сервис: снижение простоев на 30%</h3><span class="card__more">Подробнее <span class="arr" aria-hidden="true">→</span></span></a></div></div></section>
 
-<section id="contacts" style="background: #E7EFF5; border-top: 1px solid #CFDCE7;">
-<div style="max-width: 1280px; margin: 0 auto; padding: 120px 32px; display: flex; flex-wrap: wrap; gap: 64px;">
-<div class="z-reveal" style="flex: 1 1 420px; min-width: 0; display: flex; flex-direction: column; gap: 24px;">
-<span style="font-family: 'IBM Plex Mono', monospace; font-size: 14px; color: #0077B6; letter-spacing: 0.08em; text-transform: uppercase;">05 — Контакты</span>
-<h2 style="margin: 0; font-size: clamp(32px, 3.8vw, 52px); line-height: 1.08; font-weight: 600; letter-spacing: -0.015em;">Расскажите об объекте — подготовим решение и оценку</h2>
-<div style="display: flex; flex-direction: column; gap: 14px; font-size: 18px;">
-<a href="tel:+73833632381" style="font-family: 'IBM Plex Mono', monospace; font-size: 26px; text-decoration: none; font-weight: 500;">+7 (383) 363-23-81</a>
-<a href="mailto:office@zptk.ru" style="font-family: 'IBM Plex Mono', monospace; font-size: 20px; color: #0077B6;">office@zptk.ru</a>
-<span style="color: #3A4B59;">630049, г. Новосибирск, Красный проспект, д. 200, оф. 311</span>
-<span style="color: #3A4B59;">Филиал: 117335, г. Москва, ул. Вавилова, д. 69/75, оф. 719</span>
+<section class="sec sec--tight"><div class="wrap"><div class="cta reveal"><div class="ai-bg" aria-hidden="true"></div><svg class="ai-net" viewBox="0 0 720 420" aria-hidden="true"><line class="l" x1="80" y1="60" x2="220" y2="30"/><line class="l" x1="220" y1="30" x2="360" y2="90"/><line class="l" x1="360" y1="90" x2="520" y2="40"/><line class="l" x1="520" y1="40" x2="640" y2="130"/><line class="l" x1="80" y1="60" x2="140" y2="190"/><line class="l" x1="220" y1="30" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="300" y2="220"/><line class="l" x1="360" y1="90" x2="460" y2="200"/><line class="l" x1="520" y1="40" x2="460" y2="200"/><line class="l" x1="640" y1="130" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="300" y2="220"/><line class="l" x1="300" y1="220" x2="460" y2="200"/><line class="l" x1="460" y1="200" x2="600" y2="260"/><line class="l" x1="140" y1="190" x2="60" y2="320"/><line class="l" x1="300" y1="220" x2="220" y2="360"/><line class="l" x1="300" y1="220" x2="400" y2="330"/><line class="l" x1="460" y1="200" x2="400" y2="330"/><line class="l" x1="600" y1="260" x2="560" y2="380"/><line class="l" x1="60" y1="320" x2="220" y2="360"/><line class="l" x1="220" y1="360" x2="400" y2="330"/><line class="l" x1="400" y1="330" x2="560" y2="380"/><line class="l" x1="560" y1="380" x2="680" y2="350"/><line class="l" x1="600" y1="260" x2="680" y2="350"/><circle class="n p" cx="80" cy="60" r="6" style="animation-delay:0.0s"/><circle class="n" cx="220" cy="30" r="4" style="animation-delay:-0.4s"/><circle class="n" cx="360" cy="90" r="4" style="animation-delay:-0.8s"/><circle class="n p" cx="520" cy="40" r="4" style="animation-delay:-1.2s"/><circle class="n" cx="640" cy="130" r="6" style="animation-delay:-1.6s"/><circle class="n" cx="140" cy="190" r="4" style="animation-delay:-2.0s"/><circle class="n p" cx="300" cy="220" r="4" style="animation-delay:-2.4s"/><circle class="n" cx="460" cy="200" r="4" style="animation-delay:-2.8s"/><circle class="n" cx="600" cy="260" r="6" style="animation-delay:-3.2s"/><circle class="n p" cx="60" cy="320" r="4" style="animation-delay:-3.6s"/><circle class="n" cx="220" cy="360" r="4" style="animation-delay:-4.0s"/><circle class="n" cx="400" cy="330" r="4" style="animation-delay:-4.4s"/><circle class="n p" cx="560" cy="380" r="6" style="animation-delay:-4.8s"/><circle class="n" cx="680" cy="350" r="4" style="animation-delay:-5.2s"/></svg>
+<div class="stack" style="max-width:640px"><span class="eyebrow">Презентация</span>
+<h2 class="h2">Вся группа ЗПТК в одном файле</h2>
+<p>Направления, собственные разработки, ориентиры и схемы решений. Удобно переслать коллегам и приложить к запросу.</p></div>
+<div class="actions"><a class="btn btn--primary btn--lg" href="zptk-prezentaciya.pdf" download><svg class="" width="20" height="20" viewBox="0 0 40 40" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 5 V26 M11 17 L20 26 L29 17 M6 34 H34"/></svg>Скачать презентацию <small>PDF, 1,1 МБ</small></a><a class="btn btn--ghost btn--lg" href="mailto:office@zptk.ru">office@zptk.ru</a></div>
+</div></div></section>
+</main>
+<footer class="ftr"><div class="wrap ftr__in">
+<div><div class="ftr__h" data-zk>ООО «Завод программно-технических комплексов» (ООО «ЗПТК»)</div>
+<p>Инжиниринговая группа полного цикла: связь, логистика, энергетика, собственное ПО и EPCM.</p>
+<p class="mono" style="font-size:13px;margin-top:10px">ИНН 5402001518 · КПП 540201001 · ОГРН 1155476002494</p>
+<p style="margin-top:10px"><a href="tel:+73833632381" class="mono">+7 (383) 363-23-81</a><br><a href="mailto:office@zptk.ru" class="mono">office@zptk.ru</a></p></div>
+<nav aria-label="Направления"><div class="ftr__h">Направления</div><a href="napravleniya/svyaz.html">Инфраструктура связи</a><a href="napravleniya/logistika.html">Логистические центры</a><a href="napravleniya/energetika.html">Энергетика и АИИС КУЭ</a><a href="napravleniya/cod.html">ЦОД и технологические сети</a><a href="napravleniya/sobstvennoe-po.html">Собственное ПО</a><a href="napravleniya/ii-agenty.html">ИИ-агенты</a></nav>
+<nav aria-label="Направления, продолжение"><div class="ftr__h" aria-hidden="true">&nbsp;</div><a href="napravleniya/servis.html">Сервис и предиктивная аналитика</a><a href="napravleniya/epcm.html">EPCM-контракты</a></nav>
+<nav aria-label="Компания"><div class="ftr__h">Компания</div>
+<a href="o-kompanii.html">О компании</a><a href="razrabotki.html">Собственные разработки</a>
+<a href="partnery.html">Ориентиры и технологии</a><a href="proekty.html">Проекты и кейсы</a>
+<a href="prezentaciya.html">Презентация (PDF)</a><a href="it.html">Сведения об IT-деятельности</a>
+<a href="kontakty.html">Контакты и реквизиты</a></nav>
 </div>
-</div>
-<form action="mailto:office@zptk.ru" method="post" enctype="text/plain" class="z-reveal" style="flex: 1 1 420px; min-width: 0; background: #FFFFFF; border: 1px solid #CFDCE7; border-radius: 10px; padding: 40px; display: flex; flex-direction: column; gap: 20px; box-shadow: 0 30px 60px -40px rgba(10,42,66,0.5);">
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-name" style="font-size: 14px; font-weight: 500;">Имя и компания</label><input id="f-name" name="Имя" required type="text" placeholder="Иван Петров, ООО «Энерго»" style="font: inherit; font-size: 16px; padding: 14px 16px; border: 1px solid #9DB3C4; border-radius: 6px; background: #FFFFFF; min-height: 48px; box-sizing: border-box;"></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-phone" style="font-size: 14px; font-weight: 500;">Телефон или e-mail</label><input id="f-phone" name="Контакт" required type="text" placeholder="+7 ___ ___-__-__" style="font: inherit; font-size: 16px; padding: 14px 16px; border: 1px solid #9DB3C4; border-radius: 6px; background: #FFFFFF; min-height: 48px; box-sizing: border-box;"></div>
-<div style="display: flex; flex-direction: column; gap: 8px;"><label for="f-msg" style="font-size: 14px; font-weight: 500;">Задача</label><textarea id="f-msg" name="Задача" rows="4" placeholder="Например: АИИС КУЭ для подстанции 110 кВ" style="font: inherit; font-size: 16px; padding: 14px 16px; border: 1px solid #9DB3C4; border-radius: 6px; background: #FFFFFF; resize: vertical;"></textarea></div>
-<label for="f-consent" class="z-consent" style="display:flex;gap:10px;align-items:flex-start;font-size:13px;line-height:1.5;color: #4A5A67; cursor:pointer;"><input id="f-consent" name="Согласие на обработку ПДн" value="да" type="checkbox" required style="width:18px;height:18px;margin:1px 0 0;flex:none;accent-color:#0077B6;cursor:pointer;"><span>Я даю согласие на обработку моих персональных данных в соответствии с <a href="politika.html" style="color: #0077B6;">Политикой конфиденциальности</a>.</span></label>
-<button type="submit" class="z-btn" style="font: inherit; font-weight: 600; font-size: 17px; background: #0077B6; color: #FFFFFF; border: 0; border-radius: 40px; padding: 16px 28px; min-height: 52px; cursor: pointer;">Отправить заявку →</button>
-</form>
-</div>
-</section>
-
-<footer style="background: #0A2A42; color: #A6C0D4;">
-<div style="max-width: 1280px; margin: 0 auto; padding: 48px 32px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 32px; font-size: 14px; line-height: 1.7;">
-<div style="flex: 1 1 480px; min-width: 0;">
-<div data-zk style="color: #F4F7FA; font-weight: 600; margin-bottom: 6px;">ООО «Завод программно-технических комплексов» (ООО «ЗПТК»)</div>
-<div style="font-family: 'IBM Plex Mono', monospace; font-size: 13px;">ИНН 5402001518 · КПП 540201001 · ОГРН 1155476002494</div>
-<div>Основной вид деятельности: ОКВЭД 62.01 — разработка компьютерного программного обеспечения</div>
-</div>
-<nav aria-label="Нижнее меню" style="display: flex; flex-direction: column; gap: 6px;">
-<a href="uslugi.html" style="color: #E3EEF6; text-decoration: none;">Услуги</a>
-<a href="proekty.html" style="color: #E3EEF6; text-decoration: none;">Наши проекты</a>
-<a href="it.html" style="color: #E3EEF6; text-decoration: none;">Сведения об IT-деятельности</a>
-<a href="kontakty.html" style="color: #E3EEF6; text-decoration: none;">Контактные данные</a>
-</nav>
-</div>
-<div style="border-top: 1px solid rgba(166,192,212,0.18);"><div style="max-width: 1280px; margin: 0 auto; padding: 16px 32px 20px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 24px; font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: #7F96AA;"><span>© 2005–2026 ООО «ЗПТК»</span><a href="politika.html" style="color: #A6C0D4;">Политика конфиденциальности</a></div></div>
+<div class="ftr__bar"><div class="wrap"><span>© 2005–2026 ООО «ЗПТК»</span><a href="politika.html">Политика конфиденциальности</a></div></div>
 </footer>
-
 </div>
-<script>
-(function(){
-  var b=document.getElementById('zBurger'), m=document.getElementById('zMnav');
-  function setMenu(open){ if(!b||!m) return; m.hidden=!open; b.setAttribute('aria-expanded', open?'true':'false');
-    b.querySelector('.z-ic-close').hidden=!open; b.querySelector('.z-ic-open').hidden=open; }
-  if(b&&m){ b.addEventListener('click',function(){ setMenu(m.hidden); });
-    Array.prototype.forEach.call(m.querySelectorAll('a'),function(a){ a.addEventListener('click',function(){ setMenu(false); }); });
-    window.addEventListener('resize',function(){ if(window.innerWidth>1200) setMenu(false); }); }
-  var nums=document.querySelectorAll('[data-count]'); if(!nums.length) return;
-  var reduce=false; try{ reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches; }catch(e){}
-  if(reduce) return;
-  function fmt(n){ return String(n).replace(/\B(?=(\d{3})+(?!\d))/g,' '); }
-  var start=null;
-  function tick(t){ if(start===null) start=t; var p=Math.min(1,(t-start)/2200), e=1-Math.pow(1-p,3);
-    Array.prototype.forEach.call(nums,function(el){ el.textContent=fmt(Math.round(+el.getAttribute('data-count')*e)); });
-    if(p<1) requestAnimationFrame(tick); }
-  requestAnimationFrame(tick);
-})();
-</script>
-<script>
-(function(){
-  var root=document.documentElement;
-  function setTheme(t){root.classList.remove('z-day','z-night');root.classList.add('z-'+t);try{localStorage.setItem('zptk-theme',t)}catch(e){}}
-  Array.prototype.forEach.call(document.querySelectorAll('[data-z="theme"]'),function(b){b.addEventListener('click',function(){setTheme(root.classList.contains('z-night')?'day':'night');});});
-  var snd=null;function eng(){if(!snd){snd=(function(){
-var AC=window.AudioContext||window.webkitAudioContext;if(!AC){return {on:function(){},off:function(){}};}
-var ctx=null,master=null,timer=null,noise=null;
-function build(){
-ctx=new AC();master=ctx.createGain();master.gain.value=0;
-var comp=ctx.createDynamicsCompressor();master.connect(comp);comp.connect(ctx.destination);
-var hum=ctx.createGain();hum.gain.value=0.55;hum.connect(master);
-var lp=ctx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=700;lp.connect(hum);
-[[50,0.5],[100,0.42],[150,0.2],[200,0.12],[250,0.06],[300,0.05]].forEach(function(p){var o=ctx.createOscillator();o.type='sine';o.frequency.value=p[0];o.detune.value=(Math.random()-0.5)*6;var g=ctx.createGain();g.gain.value=p[1];o.connect(g);g.connect(lp);o.start();});
-var saw=ctx.createOscillator();saw.type='sawtooth';saw.frequency.value=100;var bp=ctx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=1200;bp.Q.value=0.8;var sg=ctx.createGain();sg.gain.value=0.035;saw.connect(bp);bp.connect(sg);sg.connect(master);saw.start();
-var lfo=ctx.createOscillator();lfo.frequency.value=0.23;var lg=ctx.createGain();lg.gain.value=0.12;lfo.connect(lg);lg.connect(hum.gain);lfo.start();
-var len=ctx.sampleRate*2;noise=ctx.createBuffer(1,len,ctx.sampleRate);var d=noise.getChannelData(0);for(var i=0;i<len;i++){d[i]=Math.random()*2-1;}
-var hs=ctx.createBufferSource();hs.buffer=noise;hs.loop=true;var hf=ctx.createBiquadFilter();hf.type='highpass';hf.frequency.value=4000;var hg=ctx.createGain();hg.gain.value=0.012;hs.connect(hf);hf.connect(hg);hg.connect(master);hs.start();
-}
-function crackle(){
-if(!ctx){return;}var t=ctx.currentTime+0.02,n=3+Math.floor(Math.random()*8);
-for(var k=0;k<n;k++){var s=ctx.createBufferSource();s.buffer=noise;var f=ctx.createBiquadFilter();f.type='bandpass';f.frequency.value=2500+Math.random()*4000;f.Q.value=1.5;var g=ctx.createGain();var st=t+k*(0.01+Math.random()*0.05),dur=0.005+Math.random()*0.03,a=0.15+Math.random()*0.5;g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(a,st+0.002);g.gain.exponentialRampToValueAtTime(0.0001,st+dur);s.connect(f);f.connect(g);g.connect(master);s.start(st,Math.random()*1.5,dur+0.02);}
-if(Math.random()<0.25){var o=ctx.createOscillator();o.type='square';o.frequency.setValueAtTime(900+Math.random()*600,t);o.frequency.exponentialRampToValueAtTime(120,t+0.25);var of=ctx.createBiquadFilter();of.type='lowpass';of.frequency.value=3000;var og=ctx.createGain();og.gain.setValueAtTime(0.0001,t);og.gain.exponentialRampToValueAtTime(0.06,t+0.01);og.gain.exponentialRampToValueAtTime(0.0001,t+0.3);o.connect(of);of.connect(og);og.connect(master);o.start(t);o.stop(t+0.35);}
-timer=setTimeout(crackle,1800+Math.random()*4500);
-}
-return {
-on:function(){if(!ctx){build();}if(ctx.state==='suspended'){ctx.resume();}master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(0.22,ctx.currentTime,0.4);clearTimeout(timer);timer=setTimeout(crackle,900);},
-off:function(){if(!ctx){return;}clearTimeout(timer);master.gain.cancelScheduledValues(ctx.currentTime);master.gain.setTargetAtTime(0,ctx.currentTime,0.15);setTimeout(function(){if(ctx&&!(master.gain.value>0.01)){ctx.suspend();}},900);}
-};
-})();}return snd;}
-  var btns=document.querySelectorAll('[data-z="sound"]');
-  function setSound(on,save){root.classList.toggle('z-snd-on',on);Array.prototype.forEach.call(btns,function(b){b.setAttribute('aria-pressed',on?'true':'false');});if(on){eng().on();}else if(snd){snd.off();}if(save){try{localStorage.setItem('zptk-sound',on?'on':'off')}catch(e){}}}
-  Array.prototype.forEach.call(btns,function(b){b.addEventListener('click',function(){setSound(!root.classList.contains('z-snd-on'),true);});});
-  var pref=null;try{pref=localStorage.getItem('zptk-sound')}catch(e){}
-  if(pref==='on'){var first=function(ev){if(ev.target.closest&&ev.target.closest('[data-z="sound"]'))return;document.removeEventListener('pointerdown',first,true);setSound(true,false);};document.addEventListener('pointerdown',first,true);}
-})();
-</script>
-<style>
-.z-kapa{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:9999;
- background:#0A2A42;color:#F4F7FA;border:1px solid #3DB4F0;border-radius:40px;padding:12px 22px;
- font:500 14px/1.2 'IBM Plex Mono',monospace;box-shadow:0 0 0 6px rgba(61,180,240,.12),0 20px 40px -20px rgba(0,0,0,.6);
- transition:opacity .35s,transform .35s}
-.z-kapa.on{opacity:1;transform:translate(-50%,0)}
-.z-kapa b{color:#3DB4F0;font-weight:600}
-</style>
-<script>
-(function(){
-  try{console.log('%c⚡ ЗПТК %c сайт разработан kapa ','background:#008DD2;color:#fff;padding:4px 8px;border-radius:4px 0 0 4px;font-weight:600','background:#0A2A42;color:#3DB4F0;padding:4px 8px;border-radius:0 4px 4px 0');}catch(e){}
-  var toast=null,hide=null;
-  function show(){
-    if(!toast){toast=document.createElement('div');toast.className='z-kapa';toast.setAttribute('role','status');
-      toast.innerHTML='⚡ Сайт разработан <b>kapa</b>';document.body.appendChild(toast);}
-    clearTimeout(hide);requestAnimationFrame(function(){toast.classList.add('on');});
-    hide=setTimeout(function(){toast.classList.remove('on');},3500);
-  }
-  var t=document.querySelector('[data-zk]'),n=0,last=0;
-  if(t){t.addEventListener('click',function(){var now=Date.now();n=(now-last<600)?n+1:1;last=now;if(n>=5){n=0;show();}});}
-  var buf='';document.addEventListener('keydown',function(e){if(!e.key||e.key.length!==1)return;buf=(buf+e.key.toLowerCase()).slice(-4);if(buf==='kapa'||buf==='кфзф')show();});
-})();
-</script>
+<script src="assets/site.js" defer></script>
 </body>
 </html>
