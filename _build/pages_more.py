@@ -1,5 +1,5 @@
 # Разделы сайта: направления, разработки, ориентиры, проекты, о компании.
-from data import ORG, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS, CASES, T
+from data import ORG, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS, CASES, T, HIDE_TODO, has_todo
 
 
 def build(b):
@@ -37,7 +37,7 @@ def build(b):
         path = f'napravleniya/{d["slug"]}.html'
         slogan = d["slogan"] + ("" if not d.get("slogan_draft") else "")
         slogan_html = f'<p class="slogan" style="color:#fff;max-width:900px">{E(slogan)}</p>'
-        if d.get("slogan_draft"):
+        if d.get("slogan_draft") and not HIDE_TODO:
             slogan_html = f'<p class="slogan" style="color:#fff;max-width:900px">{T(E(slogan))}</p>'
         hero = page_hero([("../index.html", "Главная"), ("../napravleniya.html", "Направления"), (None, d["title"])],
                          f'Направление {i + 1:02d} · {blk["title"]}', d["h1"], "",
@@ -153,7 +153,7 @@ def build(b):
 <span class="card__tag">Кейс {i + 1:02d} · <a href="napravleniya/{d["slug"]}.html">{d["title"]}</a> · заказчик под NDA</span>
 <h3 class="h3">{c["title"]}</h3>
 <div class="case"><div><h4>Задача</h4><p>{c["task"]}</p></div><div><h4>Решение</h4><p>{c["solution"]}</p></div>
-<div><h4>Технологии</h4><p>{c["tech"]}</p></div><div><h4>Результат</h4><p>{c["result"]}</p></div></div></article>''')
+<div><h4>Технологии</h4><p>{c["tech"]}</p></div>{"" if HIDE_TODO and has_todo(c["result"]) else f'<div><h4>Результат</h4><p>{c["result"]}</p></div>'}</div></article>''')
     before = f'''<section class="sec" style="padding-bottom:56px"><div class="wrap stack-lg">
 <div class="sec-head"><div><span class="eyebrow">Кейсы</span><h2 class="h2">Задача → решение → технологии → результат</h2>
 <p class="lead">Названия заказчиков скрыты по NDA. Ниже — реализованные проекты для крупнейших энергетических и телеком-компаний.</p></div></div>
@@ -178,26 +178,15 @@ def build(b):
             ("Сергеев Илья", "Заместитель генерального директора — директор по развитию"),
             ("Котляревский Антон", "Коммерческий директор")]
     team_html = "".join(f'<div class="card">{icon("users", 32)}<h3 class="h3" style="font-size:20px">{n}</h3><p>{r}</p></div>' for n, r in team)
-    team_html += f'<div class="card">{icon("users", 32)}<h3 class="h3" style="font-size:20px">{T("Ключевые эксперты")}</h3><p>{T("главный инженер, руководители направлений, архитектор ЕЦУД — ФИО, роль, опыт")}</p></div>'
+    if not HIDE_TODO:
+        team_html += f'<div class="card">{icon("users", 32)}<h3 class="h3" style="font-size:20px">{T("Ключевые эксперты")}</h3><p>{T("главный инженер, руководители направлений, архитектор ЕЦУД — ФИО, роль, опыт")}</p></div>'
     geo = ["Новосибирск — головной офис", "Москва — филиал", "Красноярский край", "Алтайский край", "Республика Дагестан",
            "Краснодарский край", "Саратовская, Владимирская, Орловская области", "Республика Хакасия"]
     body = page_hero([("index.html", "Главная"), (None, "О компании")], f"С {ORG['founded']} года",
                      "О компании",
                      "ЗПТК — инжиниринговая группа полного цикла. Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости: связь, логистика, энергетика. Собственные разработки на базе ИИ. EPCM-контракты.",
-                     '<div class="anchor-nav"><a href="#history">История и миссия</a><a href="#team">Команда</a><a href="#licenses">Лицензии и сертификаты</a><a href="#reestr">Реестр ПО</a><a href="#geo">География</a><a href="#rekvizity">Реквизиты</a></div>')
-    body += f'''
-<section class="sec" id="history"><div class="wrap stack-lg">
-<div class="split"><div class="stack"><span class="eyebrow">История и миссия</span><h2 class="h2">От точного учёта — к умной энергетике</h2></div>
-<div class="stack"><p class="lead">Мы начинали с инжиниринга в энергетике: системы учёта, телемеханика, релейная защита. Сегодня ЗПТК — группа, которая отвечает за весь жизненный цикл критической инфраструктуры: от проекта и стройки до собственного ПО, ИИ-агентов и сервиса.</p>
-<p><b>Миссия:</b> {T("сформулировать миссию компании")}</p></div></div>
-<div class="grid-4">{hist}</div></div></section>
-
-<section class="sec sec--alt" id="team"><div class="wrap stack-lg">
-<div class="sec-head"><div><span class="eyebrow">Команда</span><h2 class="h2">Руководство и ключевые эксперты</h2>
-<p class="lead">ПИР, поставка, СМР, ПНР и сервис выполняем штатным персоналом, без генподрядчика между нами и заказчиком. Численность: {T("сколько сотрудников и инженеров")}.</p></div></div>
-<div class="grid">{team_html}</div></div></section>
-
-<section class="sec" id="licenses"><div class="wrap split">
+                     '<div class="anchor-nav"><a href="#history">' + ("История" if HIDE_TODO else "История и миссия") + '</a><a href="#team">Команда</a>' + ("" if HIDE_TODO else '<a href="#licenses">Лицензии и сертификаты</a>') + '<a href="#reestr">Реестр ПО</a><a href="#geo">География</a><a href="#rekvizity">Реквизиты</a></div>')
+    licenses = "" if HIDE_TODO else f'''<section class="sec" id="licenses"><div class="wrap split">
 <div class="stack"><span class="eyebrow">Лицензии и сертификаты</span><h2 class="h2">Допуски и членство в СРО</h2>
 <p class="lead">Документы, которые подтверждают право выполнять проектные, строительно-монтажные и пусконаладочные работы.</p></div>
 <div class="panel"><ul class="checks">
@@ -206,7 +195,20 @@ def build(b):
 <li>Лицензии: {T("ФСТЭК, ФСБ, МЧС — если есть")}</li>
 <li>Сертификаты менеджмента: {T("ISO 9001 и другие — если есть")}</li>
 <li>Аккредитация IT-компании: <a href="it.html">сведения об IT-деятельности</a></li>
-</ul></div></div></section>
+</ul></div></div></section>'''
+    body += f'''
+<section class="sec" id="history"><div class="wrap stack-lg">
+<div class="split"><div class="stack"><span class="eyebrow">{"История" if HIDE_TODO else "История и миссия"}</span><h2 class="h2">От точного учёта — к умной энергетике</h2></div>
+<div class="stack"><p class="lead">Мы начинали с инжиниринга в энергетике: системы учёта, телемеханика, релейная защита. Сегодня ЗПТК — группа, которая отвечает за весь жизненный цикл критической инфраструктуры: от проекта и стройки до собственного ПО, ИИ-агентов и сервиса.</p>
+{"" if HIDE_TODO else '<p><b>Миссия:</b> ' + T("сформулировать миссию компании") + '</p>'}</div></div>
+<div class="grid-4">{hist}</div></div></section>
+
+<section class="sec sec--alt" id="team"><div class="wrap stack-lg">
+<div class="sec-head"><div><span class="eyebrow">Команда</span><h2 class="h2">Руководство</h2>
+<p class="lead">ПИР, поставка, СМР, ПНР и сервис выполняем штатным персоналом, без генподрядчика между нами и заказчиком.{"" if HIDE_TODO else " Численность: " + T("сколько сотрудников и инженеров") + "."}</p></div></div>
+<div class="grid">{team_html}</div></div></section>
+
+{licenses}
 
 <section class="sec sec--dark" id="reestr">{b.dark_bg()}<div class="wrap split" style="position:relative">
 <div class="stack"><span class="eyebrow">Реестр российского ПО</span><h2 class="h2">ПТК ЕЦУД — запись № {ORG["registry_no"]}</h2>

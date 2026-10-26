@@ -13,7 +13,7 @@ import sys
 from datetime import date
 
 sys.path.insert(0, os.path.dirname(__file__))
-from data import (ORG, POSITIONING, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS,  # noqa: E402
+from data import (HIDE_TODO, ORG, POSITIONING, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS,  # noqa: E402
                   CASES, STATS_MAIN, T)
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
@@ -414,7 +414,7 @@ def page_index():
 def status(st):
     kind, label = st
     if kind == "todo":
-        return f'<span class="status">{T(label)}</span>'
+        return "" if HIDE_TODO else f'<span class="status">{T(label)}</span>'
     return f'<span class="status status--{kind}">{label}</span>'
 
 
@@ -499,7 +499,10 @@ def write_all():
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(sm) + "\n")
     open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(
         f"User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {BASE_URL}sitemap.xml\n")
-    # Список плейсхолдеров
+    # Список плейсхолдеров (в публичной сборке они скрыты, поэтому список не перезаписываем)
+    if HIDE_TODO:
+        print(f"Собрано страниц: {len(PAGES)}, плейсхолдеры скрыты (HIDE_TODO), список в _build/TODO.md")
+        return
     rows = []
     for path in urls:
         for m in re.finditer(r'<em class="todo"[^>]*>(.*?)</em>', PAGES[path]):
