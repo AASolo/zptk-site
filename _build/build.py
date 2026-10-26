@@ -300,7 +300,8 @@ def layout(path, title, description, body, ld=(), extra_head="", og_title=None):
 <meta property="og:title" content="{E(og_title)}">
 <meta property="og:description" content="{E(description)}">
 <meta property="og:url" content="{url}">
-<meta property="og:image" content="{BASE_URL}og.jpg">
+<meta property="og:image" content="{BASE_URL}og-zptk.jpg">
+<meta property="og:image:alt" content="ЗПТК — инжиниринг полного цикла для критической инфраструктуры">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
@@ -407,7 +408,7 @@ def page_index():
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ЗПТК", "url": BASE_URL, "inLanguage": "ru"}]
     add("index.html", layout("index.html",
                              "ЗПТК — инжиниринг полного цикла: связь, логистика, энергетика, АИИС КУЭ, EPCM",
-                             "Проектирование, строительство и обслуживание инфраструктуры повышенной отказоустойчивости. Собственное ПО в реестре РФ. ИИ-агенты. EPCM-контракты.",
+                             "Инжиниринговая группа ЗПТК: связь, логистические центры, АИИС КУЭ и энергосервис, ЦОД, собственное ПО в реестре РФ, ИИ-агенты, предиктивный сервис и EPCM-контракты. С 2005 года.",
                              body, ld))
 
 
