@@ -175,8 +175,7 @@ def build(b):
                ("2026", "Инжиниринговая группа", "8 направлений для заказчиков, ИИ-агенты и EPCM-контракты.")]
     hist = "".join(f'<div class="card"><span class="mono" style="font-size:34px;font-weight:600;color:var(--accent)">{y}</span><h3 class="h3" style="font-size:20px">{t}</h3><p>{x}</p></div>' for y, t, x in history)
     team = [("Богданов Антон Владимирович", "Генеральный директор"),
-            ("Сергеев Илья", "Заместитель генерального директора — директор по развитию"),
-            ("Котляревский Антон", "Коммерческий директор")]
+            ("Сергеев Илья", "Заместитель генерального директора — директор по развитию")]
     team_html = "".join(f'<div class="card">{icon("users", 32)}<h3 class="h3" style="font-size:20px">{n}</h3><p>{r}</p></div>' for n, r in team)
     if not HIDE_TODO:
         team_html += f'<div class="card">{icon("users", 32)}<h3 class="h3" style="font-size:20px">{T("Ключевые эксперты")}</h3><p>{T("главный инженер, руководители направлений, архитектор ЕЦУД — ФИО, роль, опыт")}</p></div>'
