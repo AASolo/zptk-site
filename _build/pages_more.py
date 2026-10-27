@@ -16,7 +16,7 @@ def build(b):
 <span class="card__more">Подробнее {ARR}</span></a>''' for d in dirs)
         groups.append(f'''<div class="stack" id="{blk["key"]}"><div class="sec-head"><div><span class="eyebrow">Блок {blk["n"]}</span>
 <h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{blk["title"]}</h2><p class="lead">{blk["text"]}</p></div></div>
-<div class="grid">{cards}</div></div>''')
+<div class="grid grid--dirs">{cards}</div></div>''')
     anchors = "".join(f'<a href="#{blk["key"]}">{blk["title"]}</a>' for blk in BLOCKS)
     body = page_hero([("index.html", "Главная"), (None, "Направления")], "8 направлений · 4 блока",
                      "Направления ЗПТК",
@@ -53,15 +53,16 @@ def build(b):
             if d.get("benchmarks"):
                 rows.append(f'<div class="stack" style="gap:12px"><span class="muted mono" style="font-size:13px">ОРИЕНТИРЫ</span>{chips(d["benchmarks"])}</div>')
             partners_html = f'''<section class="sec sec--tight"><div class="wrap stack">
-<span class="eyebrow">Ориентиры</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">На кого равняемся и на чём строим</h2>
+<span class="eyebrow">{"Ориентиры и технологии" if d.get("benchmarks") else "Технологии"}</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{"На кого равняемся и на чём строим" if d.get("benchmarks") else "На чём строим"}</h2>
 {"".join(rows)}<a class="link-arr" href="../partnery.html">Все ориентиры и технологии {ARR}</a></div></section>'''
         proof = (f'<div class="panel panel--accent"><span class="eyebrow">Из практики</span><p style="margin-top:8px">{d["proof"]}</p>'
                  f'<a class="link-arr" style="margin-top:12px" href="../proekty.html">Все проекты {ARR}</a></div>') if d.get("proof") else ""
         more = f'<a class="btn btn--ghost" href="../{d["more"][0]}">{d["more"][1]} {ARR}</a>' if d.get("more") else ""
         dk = d.get("deck")
         if dk:
-            scheme_html = f'''<div class="sec-head"><div><span class="eyebrow">Схема · {E(dk["scheme_title"])}</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{E(dk["scheme_caption"])}</h2></div></div>
-<figure class="scheme"><img src="../img/schemes/{dk["n"]:02d}.webp" alt="{E(dk["scheme_alt"])}" loading="lazy" decoding="async"></figure>
+            scheme_html = f'''<div class="scheme-row"><div class="stack"><span class="eyebrow">Схема · {E(dk["scheme_title"])}</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">{E(dk["scheme_caption"])}</h2>
+<p class="lead">{E(dk["deck_title"].replace("Переход на EPCM-контракты: и", "И"))}</p></div>
+<figure class="scheme"><img src="../img/schemes/{dk["n"]:02d}.webp" alt="{E(dk["scheme_alt"])}" width="738" height="836" loading="lazy" decoding="async"></figure></div>
 {flow(d["flow"], label="Схема решения: " + d["title"])}'''
         else:
             scheme_html = f'''<div class="sec-head"><div><span class="eyebrow">Схема</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Сигнал → решение → действие</h2></div></div>
@@ -110,7 +111,7 @@ def build(b):
     anchors = "".join(f'<a href="#{p["id"]}">{p["title"].split(" «")[0] if p["id"] == "ii-agenty" else p["title"]}</a>' for p in PRODUCTS)
     body = page_hero([("index.html", "Главная"), (None, "Собственные разработки")], "Наше конкурентное преимущество",
                      "Собственные разработки",
-                     f'ПО в реестре российского ПО, ИИ-агенты и аналитика, которые мы создаём сами и внедряем в проектах. Статусы: <span class="status status--reg" style="vertical-align:middle">в реестре</span> <span class="status status--pilot" style="vertical-align:middle">пилот</span> <span class="status status--rnd" style="vertical-align:middle">R&amp;D</span>',
+                     f'ПО в реестре российского ПО, ИИ-агенты и аналитика, которые мы создаём сами и внедряем в проектах.' + ("" if HIDE_TODO else ' Статусы: <span class="status status--reg" style="vertical-align:middle">в реестре</span> <span class="status status--pilot" style="vertical-align:middle">пилот</span> <span class="status status--rnd" style="vertical-align:middle">R&amp;D</span>'),
                      f'<div class="anchor-nav">{anchors}</div>')
     body += f'<section class="sec" style="padding-top:24px"><div class="wrap">{"".join(blocks)}</div></section>' + cta()
     ld = [crumbs_ld([("index.html", "Главная"), ("razrabotki.html", "Собственные разработки")]),
@@ -152,7 +153,7 @@ def build(b):
         case_html.append(f'''<article class="stack reveal" id="case-{i + 1}" style="scroll-margin-top:100px">
 <span class="card__tag">Кейс {i + 1:02d} · <a href="napravleniya/{d["slug"]}.html">{d["title"]}</a> · заказчик под NDA</span>
 <h3 class="h3">{c["title"]}</h3>
-<div class="case"><div><h4>Задача</h4><p>{c["task"]}</p></div><div><h4>Решение</h4><p>{c["solution"]}</p></div>
+<div class="case{" case--3" if HIDE_TODO and has_todo(c["result"]) else ""}"><div><h4>Задача</h4><p>{c["task"]}</p></div><div><h4>Решение</h4><p>{c["solution"]}</p></div>
 <div><h4>Технологии</h4><p>{c["tech"]}</p></div>{"" if HIDE_TODO and has_todo(c["result"]) else f'<div><h4>Результат</h4><p>{c["result"]}</p></div>'}</div></article>''')
     before = f'''<section class="sec" style="padding-bottom:56px"><div class="wrap stack-lg">
 <div class="sec-head"><div><span class="eyebrow">Кейсы</span><h2 class="h2">Задача → решение → технологии → результат</h2>

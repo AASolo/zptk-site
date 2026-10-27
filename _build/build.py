@@ -257,15 +257,13 @@ def header(path, prefix):
 
 
 def footer(prefix):
-    dirs_col = "".join(f'<a href="{prefix}napravleniya/{d["slug"]}.html">{d["title"]}</a>' for d in DIRECTIONS[:6])
-    dirs_col2 = "".join(f'<a href="{prefix}napravleniya/{d["slug"]}.html">{d["title"]}</a>' for d in DIRECTIONS[6:])
+    dirs_col = "".join(f'<a href="{prefix}napravleniya/{d["slug"]}.html">{d["title"]}</a>' for d in DIRECTIONS)
     return f'''<footer class="ftr"><div class="wrap ftr__in">
 <div><div class="ftr__h" data-zk>{ORG["name"]} ({ORG["short"]})</div>
 <p>Инжиниринговая группа полного цикла: связь, логистика, энергетика, собственное ПО и EPCM.</p>
 <p class="mono" style="font-size:13px;margin-top:10px">ИНН {ORG["inn"]} · КПП {ORG["kpp"]} · ОГРН {ORG["ogrn"]}</p>
 <p style="margin-top:10px"><a href="tel:{ORG["phone_href"]}" class="mono">{ORG["phone"]}</a><br><a href="mailto:{ORG["email"]}" class="mono">{ORG["email"]}</a></p></div>
 <nav aria-label="Направления"><div class="ftr__h">Направления</div>{dirs_col}</nav>
-<nav aria-label="Направления, продолжение"><div class="ftr__h" aria-hidden="true">&nbsp;</div>{dirs_col2}</nav>
 <nav aria-label="Компания"><div class="ftr__h">Компания</div>
 <a href="{prefix}o-kompanii.html">О компании</a><a href="{prefix}razrabotki.html">Собственные разработки</a>
 <a href="{prefix}partnery.html">Ориентиры и технологии</a><a href="{prefix}proekty.html">Проекты и кейсы</a>
@@ -348,7 +346,7 @@ def page_index():
         dirs = [d for d in DIRECTIONS if d["block"] == b["key"]]
         lis = "".join(f'<li><a href="napravleniya/{d["slug"]}.html">{d["title"]}</a></li>' for d in dirs)
         blocks.append(f'''<article class="card block reveal">{icon(b["icon"])}
-<span class="block__num">{b["n"]} · {len(dirs)} {"направления" if len(dirs) in (2, 3, 4) else "направлений"}</span>
+<span class="block__num">{b["n"]} · {len(dirs)} {"направление" if len(dirs) == 1 else "направления" if len(dirs) in (2, 3, 4) else "направлений"}</span>
 <h3 class="h3">{b["title"]}</h3><p>{b["text"]}</p><ul class="block__list">{lis}</ul></article>''')
     products = []
     for p in PRODUCTS:
@@ -397,7 +395,7 @@ def page_index():
 
 <section class="sec sec--tight"><div class="wrap stack">
 <div class="sec-head reveal"><div><span class="eyebrow">Ориентиры</span>
-<h2 class="h2">Равняемся на лидеров мирового рынка</h2></div>
+<h2 class="h2">Равняемся на лидеров рынка</h2></div>
 <a class="link-arr" href="partnery.html">Все ориентиры и технологии {ARR}</a></div>
 {chips(partners)}
 </div></section>
