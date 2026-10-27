@@ -117,7 +117,7 @@ html.z-night .z-logo-d{display:none!important}
 .mnav a{padding:14px 4px;font-size:18px;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line-2)}
 .mnav a[aria-current]{color:var(--accent);font-weight:600}
 .mnav .btn{margin-top:14px;justify-content:center;border-bottom:0;color:#fff}
-@media (max-width:1400px){.hdr__phone{display:none}}
+@media (max-width:1260px){.hdr__phone{display:none}}
 @media (max-width:1180px){.hdr__nav{display:none}.burger{display:inline-flex}}
 @media (min-width:1181px){.mnav{display:none!important}}
 @media (max-width:560px){.hdr .btn--primary{display:none}.hdr__logo img{height:36px}}
