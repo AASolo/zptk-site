@@ -303,6 +303,7 @@ def layout(path, title, description, body, ld=(), extra_head="", og_title=None):
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0A2A42">
 <link rel="icon" href="{prefix}favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="{prefix}favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="{prefix}favicon-32.png">
 <link rel="apple-touch-icon" href="{prefix}apple-touch-icon.png">
 <script>(function(){{var t=null;try{{t=localStorage.getItem('zptk-theme')}}catch(e){{}}if(t!=='day'&&t!=='night'){{var h=new Date().getHours();t=(h>=7&&h<19)?'day':'night'}}document.documentElement.classList.add('z-'+t);}})();</script>
