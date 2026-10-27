@@ -185,7 +185,7 @@ def org_ld():
         "foundingDate": ORG["founded"], "taxID": ORG["inn"],
         "description": POSITIONING,
         "address": [
-            {"@type": "PostalAddress", "streetAddress": "Красный проспект, д. 200, оф. 311", "addressLocality": "Новосибирск",
+            {"@type": "PostalAddress", "streetAddress": "Красный проспект, д. 200, оф. 914", "addressLocality": "Новосибирск",
              "postalCode": "630049", "addressCountry": "RU"},
             {"@type": "PostalAddress", "streetAddress": "ул. Вавилова, д. 69/75, оф. 719", "addressLocality": "Москва",
              "postalCode": "117335", "addressCountry": "RU"}],
