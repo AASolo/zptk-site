@@ -20,12 +20,19 @@ ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 BUILD = os.path.dirname(os.path.abspath(__file__))
 
 # Адрес, по которому сайт опубликован. Используется в canonical, og:url и sitemap.
-BASE_URL = "https://aasolo.github.io/zptk-site/"
+# Основной адрес — zptk.ru (хостинг REG.RU). Копия на GitHub Pages ссылается сюда же через canonical.
+BASE_URL = "https://zptk.ru/"
 # Номер счётчика Яндекс.Метрики. Пока пусто — счётчик не подключается.
 METRIKA_ID = ""
 PDF_FILE = "zptk-prezentaciya.pdf"
 
 E = html.escape
+
+
+def asset_ver(rel):
+    """Короткий хеш файла: после правки CSS/JS браузеры сразу берут новую версию."""
+    import hashlib
+    return hashlib.md5(open(os.path.join(ROOT, rel), "rb").read()).hexdigest()[:8]
 TODAY = date.today().isoformat()
 BLOCK_BY_KEY = {b["key"]: b for b in BLOCKS}
 DIR_BY_SLUG = {d["slug"]: d for d in DIRECTIONS}
@@ -290,10 +297,10 @@ def layout(path, title, description, body, ld=(), extra_head="", og_title=None):
 <title>{E(title)}</title>
 <meta name="description" content="{E(description)}">
 <meta name="author" content="kapa">
-<link rel="canonical" href="{url}">
+{'<base href="' + BASE_URL + '">' + chr(10) + '<meta name="robots" content="noindex">' if path == "404.html" else '<link rel="canonical" href="' + url + '">'}
 <link rel="preload" href="{prefix}plex-sans-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="{prefix}fonts.css">
-<link rel="stylesheet" href="{prefix}assets/site.css">
+<link rel="stylesheet" href="{prefix}assets/site.css?v={asset_ver("assets/site.css")}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="ЗПТК">
 <meta property="og:locale" content="ru_RU">
@@ -322,7 +329,7 @@ def layout(path, title, description, body, ld=(), extra_head="", og_title=None):
 </main>
 {footer(prefix)}
 </div>
-<script src="{prefix}assets/site.js" defer></script>
+<script src="{prefix}assets/site.js?v={asset_ver("assets/site.js")}" defer></script>
 </body>
 </html>
 '''
@@ -499,7 +506,7 @@ def write_all():
     sm.append("</urlset>")
     open(os.path.join(ROOT, "sitemap.xml"), "w", encoding="utf-8").write("\n".join(sm) + "\n")
     open(os.path.join(ROOT, "robots.txt"), "w", encoding="utf-8").write(
-        f"User-agent: *\nAllow: /\nDisallow: /_build/\n\nSitemap: {BASE_URL}sitemap.xml\n")
+        f"User-agent: *\nAllow: /\n\nSitemap: {BASE_URL}sitemap.xml\n")
     # Список плейсхолдеров (в публичной сборке они скрыты, поэтому список не перезаписываем)
     if HIDE_TODO:
         print(f"Собрано страниц: {len(PAGES)}, плейсхолдеры скрыты (HIDE_TODO), список в _build/TODO.md")

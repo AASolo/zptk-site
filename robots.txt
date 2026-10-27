@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /_build/
 
-Sitemap: https://aasolo.github.io/zptk-site/sitemap.xml
+Sitemap: https://zptk.ru/sitemap.xml
