@@ -6,6 +6,25 @@ DirectoryIndex index.html
 Options -Indexes
 ErrorDocument 404 /404.html
 
+# Старые адреса сайта на WordPress (ещё в поиске) ведут на новые страницы
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteRule ^(услуги|uslugi)/?$ /uslugi.html [R=301,L,NC]
+  RewriteRule ^(деятельность-в-ит|деятельность-в-it|deyatelnost-v-it|it)/?$ /it.html [R=301,L,NC]
+  RewriteRule ^(наши-проекты|проекты|nashi-proekty|proekty)/?$ /proekty.html [R=301,L,NC]
+  RewriteRule ^(контактные-данные|контакты|kontaktnye-dannye|kontakty)/?$ /kontakty.html [R=301,L,NC]
+  RewriteRule ^(о-компании|о-нас|o-kompanii|o-nas|about)/?$ /o-kompanii.html [R=301,L,NC]
+  RewriteRule ^(политика-конфиденциальности|privacy-policy|politika)/?$ /politika.html [R=301,L,NC]
+  RewriteRule ^napravleniya/?$ /napravleniya.html [R=301,L]
+  # Прочие страницы и служебные адреса WordPress ведут на главную
+  RewriteCond %{QUERY_STRING} (^|&)(p|page_id|cat)=\d+ [NC]
+  RewriteRule ^(index\.php)?$ /? [R=301,L]
+  RewriteRule ^(wp-[^/]+|feed|category|tag|author)(/.*)?$ / [R=301,L,NC]
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^[^.]+/$ / [R=301,L]
+</IfModule>
+
 AddType font/woff2 .woff2
 AddType image/webp .webp
 
