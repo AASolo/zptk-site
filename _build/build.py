@@ -23,7 +23,7 @@ BUILD = os.path.dirname(os.path.abspath(__file__))
 # Основной адрес — zptk.ru (хостинг REG.RU). Копия на GitHub Pages ссылается сюда же через canonical.
 BASE_URL = "https://zptk.ru/"
 # Номер счётчика Яндекс.Метрики. Пока пусто — счётчик не подключается.
-METRIKA_ID = ""
+METRIKA_ID = "113839421"
 PDF_FILE = "zptk-prezentaciya.pdf"
 
 E = html.escape
@@ -222,8 +222,8 @@ def metrika():
     return f'''<script>window.ZPTK_YM={METRIKA_ID};(function(m,e,t,r,i,k,a){{m[i]=m[i]||function(){{(m[i].a=m[i].a||[]).push(arguments)}};
 m[i].l=1*new Date();for(var j=0;j<document.scripts.length;j++){{if(document.scripts[j].src===r){{return;}}}}
 k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)}})
-(window,document,"script","https://mc.yandex.ru/metrika/tag.js","ym");
-ym({METRIKA_ID},"init",{{clickmap:true,trackLinks:true,accurateTrackBounce:true,webvisor:true}});</script>
+(window,document,"script","https://mc.yandex.ru/metrika/tag.js?id={METRIKA_ID}","ym");
+ym({METRIKA_ID},"init",{{ssr:true,webvisor:true,clickmap:true,referrer:document.referrer,url:location.href,accurateTrackBounce:true,trackLinks:true}});</script>
 <noscript><div><img src="https://mc.yandex.ru/watch/{METRIKA_ID}" style="position:absolute;left:-9999px" alt=""></div></noscript>'''
 
 
