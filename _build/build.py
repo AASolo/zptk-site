@@ -185,7 +185,7 @@ def org_ld():
         "foundingDate": ORG["founded"], "taxID": ORG["inn"],
         "description": POSITIONING,
         "address": [
-            {"@type": "PostalAddress", "streetAddress": "Красный проспект, д. 200, оф. 914", "addressLocality": "Новосибирск",
+            {"@type": "PostalAddress", "streetAddress": "Красный проспект, д. 200, оф. 912", "addressLocality": "Новосибирск",
              "postalCode": "630049", "addressCountry": "RU"},
             {"@type": "PostalAddress", "streetAddress": "ул. Вавилова, д. 69/75, оф. 719", "addressLocality": "Москва",
              "postalCode": "117335", "addressCountry": "RU"}],
@@ -239,7 +239,7 @@ def header(path, prefix):
     mob = "\n".join(link(h, t, True) for h, t in NAV)
     return f'''<a class="skip" href="#main">К содержанию</a>
 <header class="hdr"><div class="wrap hdr__in">
-<a class="hdr__logo" href="{prefix}index.html" aria-label="ЗПТК — на главную"><img class="z-logo-d" src="{prefix}logo.png" alt="ЗПТК — Завод программно-технических комплексов" width="169" height="44"><img class="z-logo-n" src="{prefix}logo-dark.png" alt="ЗПТК — Завод программно-технических комплексов" width="169" height="44"></a>
+<a class="hdr__logo" href="{prefix}index.html" aria-label="ЗПТК — на главную"><img class="z-logo-d" src="{prefix}logo.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"><img class="z-logo-n" src="{prefix}logo-dark.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"></a>
 <nav class="hdr__nav" aria-label="Основное меню">
 {desk}
 </nav>
