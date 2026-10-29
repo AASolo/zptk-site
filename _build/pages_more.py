@@ -2,6 +2,18 @@
 from data import ORG, BLOCKS, DIRECTIONS, PRODUCTS, PARTNER_GROUPS, CASES, T, HIDE_TODO, has_todo
 
 
+CERTS = [{"no": "1833", "title": "Авторизованный партнёр ЭЛТЕКС",
+          "text": "Официальный авторизованный партнёр ООО «Предприятие «ЭЛТЕКС»: продажа, монтаж и сервисное обслуживание оборудования ЭЛТЕКС на территории России. Действует до 15.05.2027.",
+          "img": "img/certs/eltex-1833.webp", "pdf": "sertifikat-eltex-1833.pdf"}]
+
+
+def cert_card(c, ARR, prefix=""):
+    return (f'<a class="card cert" href="{prefix}{c["pdf"]}" target="_blank" rel="noopener">'
+            f'<img src="{prefix}{c["img"]}" alt="Сертификат № {c["no"]}: {c["title"]}" width="1200" height="675" loading="lazy" decoding="async">'
+            f'<h3 class="h3" style="font-size:20px">{c["title"]}</h3><p>{c["text"]}</p>'
+            f'<span class="link-arr">Сертификат № {c["no"]} (PDF) {ARR}</span></a>')
+
+
 def build(b):
     E, ARR, icon, flow, chips, add, layout = b.E, b.ARR, b.icon, b.flow, b.chips, b.add, b.layout
     page_hero, crumbs_ld, cta, status = b.page_hero, b.crumbs_ld, b.cta_presentation, b.status
@@ -67,6 +79,9 @@ def build(b):
         else:
             scheme_html = f'''<div class="sec-head"><div><span class="eyebrow">Схема</span><h2 class="h2" style="font-size:clamp(26px,3vw,38px)">Сигнал → решение → действие</h2></div></div>
 {flow(d["flow"], label="Схема решения: " + d["title"])}'''
+        if d["slug"] == "svyaz":
+            proof += (f'<div class="panel"><span class="eyebrow">Статус</span><h3 class="h3" style="font-size:20px;margin-top:8px">{CERTS[0]["title"]}</h3>'
+                      f'<p>{CERTS[0]["text"]}</p><a class="link-arr" style="margin-top:12px" href="../{CERTS[0]["pdf"]}" target="_blank" rel="noopener">Сертификат № {CERTS[0]["no"]} (PDF) {ARR}</a></div>')
         prev_d, next_d = DIRECTIONS[i - 1], DIRECTIONS[(i + 1) % len(DIRECTIONS)]
         body = hero + f'''
 <section class="sec"><div class="wrap split">
@@ -185,7 +200,7 @@ def build(b):
     body = page_hero([("index.html", "Главная"), (None, "О компании")], f"С {ORG['founded']} года",
                      "О компании",
                      "ЗПТК — инжиниринговая группа полного цикла. Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости: связь, логистика, энергетика. Собственные разработки на базе ИИ. EPCM-контракты.",
-                     '<div class="anchor-nav"><a href="#history">' + ("История" if HIDE_TODO else "История и миссия") + '</a><a href="#team">Команда</a>' + ("" if HIDE_TODO else '<a href="#licenses">Лицензии и сертификаты</a>') + '<a href="#reestr">Реестр ПО</a><a href="#geo">География</a><a href="#rekvizity">Реквизиты</a></div>')
+                     '<div class="anchor-nav"><a href="#history">' + ("История" if HIDE_TODO else "История и миссия") + '</a><a href="#team">Команда</a>' + ("" if HIDE_TODO else '<a href="#licenses">Лицензии и сертификаты</a>') + '<a href="#certs">Сертификаты</a><a href="#reestr">Реестр ПО</a><a href="#geo">География</a><a href="#rekvizity">Реквизиты</a></div>')
     licenses = "" if HIDE_TODO else f'''<section class="sec" id="licenses"><div class="wrap split">
 <div class="stack"><span class="eyebrow">Лицензии и сертификаты</span><h2 class="h2">Допуски и членство в СРО</h2>
 <p class="lead">Документы, которые подтверждают право выполнять проектные, строительно-монтажные и пусконаладочные работы.</p></div>
@@ -209,6 +224,11 @@ def build(b):
 <div class="grid">{team_html}</div></div></section>
 
 {licenses}
+
+<section class="sec" id="certs"><div class="wrap split">
+<div class="stack"><span class="eyebrow">Сертификаты и статусы</span><h2 class="h2">Подтверждённые статусы</h2>
+<p class="lead">Документы производителей оборудования, с которыми мы работаем официально.</p></div>
+<div class="stack">{"".join(cert_card(c, ARR) for c in CERTS)}</div></div></section>
 
 <section class="sec sec--dark" id="reestr">{b.dark_bg()}<div class="wrap split" style="position:relative">
 <div class="stack"><span class="eyebrow">Реестр российского ПО</span><h2 class="h2">ПТК ЕЦУД — запись № {ORG["registry_no"]}</h2>

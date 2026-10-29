@@ -344,3 +344,5 @@ html.z-night .checks li::before{background-color:#10324A}
 @media (max-width:900px){.scheme-row{grid-template-columns:1fr}}
 .scheme{margin:0;border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,.12);background:#0b1a33;max-width:460px;width:100%}
 .scheme img{display:block;width:100%;height:auto}
+.cert{text-decoration:none;color:inherit}
+.cert img{width:100%;height:auto;border-radius:8px;border:1px solid var(--line);margin-bottom:8px}
