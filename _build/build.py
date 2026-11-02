@@ -375,7 +375,7 @@ def page_index():
 <h1 class="h1 z-rise" style="animation-delay:.12s">Инжиниринг полного цикла для критической инфраструктуры</h1>
 <p class="hero__sub z-rise" style="animation-delay:.2s">Связь. Логистика. Энергетика. Собственное&nbsp;ПО. ИИ-агенты. EPCM.</p>
 <p class="lead z-rise" style="animation-delay:.28s">Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости. Развиваем собственные разработки на базе ИИ и ведём проекты по EPCM-контрактам.</p>
-<div class="actions z-rise" style="animation-delay:.36s">{pdf_button()}<a class="btn btn--ghost btn--lg" href="napravleniya.html">8 направлений {ARR}</a></div>
+<div class="actions z-rise" style="animation-delay:.36s"><a class="btn btn--primary btn--lg" href="napravleniya.html">8 направлений {ARR}</a></div>
 </div>
 <div class="hero__art">{emblem()}</div>
 </div>
