@@ -238,9 +238,16 @@ def header(path, prefix):
     desk = "\n".join(link(h, t) for h, t in NAV)
     mob = "\n".join(link(h, t, True) for h, t in NAV)
     return f'''<a class="skip" href="#main">К содержанию</a>
-<header class="hdr"><div class="topbar"><div class="wrap topbar__in">
+<header class="hdr"><div class="va-panel" role="region" aria-label="Настройки версии для слабовидящих"><div class="wrap va-panel__in">
+<div class="va-grp" role="group" aria-label="Размер шрифта"><span>Шрифт:</span><button type="button" data-va="fs:1" aria-label="Шрифт крупный">А</button><button type="button" data-va="fs:2" aria-label="Шрифт очень крупный" style="font-size:1.25em">А</button><button type="button" data-va="fs:3" aria-label="Шрифт максимальный" style="font-size:1.5em">А</button></div>
+<div class="va-grp" role="group" aria-label="Цветовая схема"><span>Цвет:</span><button type="button" data-va="c:w" class="va-sw va-sw--w" aria-label="Чёрным по белому">Ц</button><button type="button" data-va="c:b" class="va-sw va-sw--b" aria-label="Белым по чёрному">Ц</button><button type="button" data-va="c:u" class="va-sw va-sw--u" aria-label="Тёмно-синим по голубому">Ц</button><button type="button" data-va="c:y" class="va-sw va-sw--y" aria-label="Коричневым по бежевому">Ц</button></div>
+<div class="va-grp" role="group" aria-label="Изображения"><span>Изображения:</span><button type="button" data-va="img:1">Вкл</button><button type="button" data-va="img:0">Выкл</button></div>
+<div class="va-grp" role="group" aria-label="Интервал между буквами"><span>Интервал:</span><button type="button" data-va="ls:0">Обычный</button><button type="button" data-va="ls:1">Большой</button></div>
+<button type="button" data-z="va" class="va-exit">Обычная версия сайта</button>
+</div></div><div class="topbar"><div class="wrap topbar__in">
 <a href="tel:{ORG["phone_href"]}" class="mono">{ORG["phone"]}</a>
 <a href="mailto:{ORG["email"]}">{ORG["email"]}</a>
+<button type="button" data-z="va" class="topbar__va"><svg width="18" height="18" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S18 12 18 12s-3.6 6.5-10 6.5S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg>Версия для слабовидящих</button>
 <a href="{prefix}kontakty.html" class="topbar__addr">Новосибирск, Красный проспект, 200, оф. 912</a>
 </div></div><div class="wrap hdr__in">
 <a class="hdr__logo" href="{prefix}index.html" aria-label="ЗПТК — на главную"><img class="z-logo-d" src="{prefix}logo.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"><img class="z-logo-n" src="{prefix}logo-dark.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"></a>
@@ -248,6 +255,7 @@ def header(path, prefix):
 {desk}
 </nav>
 <div class="hdr__side">
+<button type="button" data-z="va" class="tbtn" aria-label="Версия для слабовидящих" title="Версия для слабовидящих"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-6.5 10-6.5S22 12 22 12s-3.6 6.5-10 6.5S2 12 2 12z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="12" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="2"/></svg></button>
 <button type="button" data-z="theme" class="tbtn" aria-label="Переключить дневную / вечернюю тему" title="Дневная / вечерняя тема"><svg class="z-ic-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="z-ic-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 <button type="button" data-z="sound" class="tbtn" aria-pressed="false" aria-label="Звук электричества" title="Звук электричества"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path class="z-ic-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="z-ic-mute" d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 <button type="button" class="tbtn burger" aria-label="Меню" aria-expanded="false" aria-controls="zMnav" id="zBurger"><span class="z-ic-close" hidden><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5 L17 17 M17 5 L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="z-ic-open"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
@@ -316,7 +324,7 @@ def layout(path, title, description, body, ld=(), extra_head="", og_title=None):
 <link rel="icon" type="image/svg+xml" href="{prefix}favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="{prefix}favicon-32.png">
 <link rel="apple-touch-icon" href="{prefix}apple-touch-icon.png">
-<script>(function(){{var t=null;try{{t=localStorage.getItem('zptk-theme')}}catch(e){{}}if(t!=='day'&&t!=='night'){{var h=new Date().getHours();t=(h>=7&&h<19)?'day':'night'}}document.documentElement.classList.add('z-'+t);}})();</script>
+<script>(function(){{var t=null;try{{t=localStorage.getItem('zptk-theme')}}catch(e){{}}if(t!=='day'&&t!=='night'){{var h=new Date().getHours();t=(h>=7&&h<19)?'day':'night'}}document.documentElement.classList.add('z-'+t);var v=null;try{{v=JSON.parse(localStorage.getItem('zptk-va')||'null')}}catch(e){{}}if(v){{document.documentElement.classList.add('va','va-fs'+v.fs,'va-c'+v.c,'va-ls'+v.ls);if(!v.img)document.documentElement.classList.add('va-noimg')}}}})();</script>
 {ld_html}
 {extra_head}
 {metrika()}

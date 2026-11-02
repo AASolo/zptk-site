@@ -14,6 +14,17 @@
   function setTheme(t){root.classList.remove('z-day','z-night');root.classList.add('z-'+t);try{localStorage.setItem('zptk-theme',t)}catch(e){}}
   Array.prototype.forEach.call(document.querySelectorAll('[data-z="theme"]'),function(btn){btn.addEventListener('click',function(){setTheme(root.classList.contains('z-night')?'day':'night');});});
 
+  /* Версия для слабовидящих (ГОСТ Р 52872-2019): шрифт, цвет, изображения, интервал */
+  var va=null;try{va=JSON.parse(localStorage.getItem('zptk-va')||'null')}catch(e){}
+  function vaApply(){root.classList.remove('va','va-fs1','va-fs2','va-fs3','va-cw','va-cb','va-cu','va-cy','va-ls0','va-ls1','va-noimg');
+    if(va){root.classList.add('va','va-fs'+va.fs,'va-c'+va.c,'va-ls'+va.ls);if(!va.img)root.classList.add('va-noimg');}
+    try{if(va)localStorage.setItem('zptk-va',JSON.stringify(va));else localStorage.removeItem('zptk-va')}catch(e){}
+    Array.prototype.forEach.call(document.querySelectorAll('[data-va]'),function(x){var kv=x.getAttribute('data-va').split(':');x.setAttribute('aria-pressed',va&&String(va[kv[0]])===kv[1]?'true':'false');});
+    Array.prototype.forEach.call(document.querySelectorAll('[data-z="va"]'),function(x){x.setAttribute('aria-pressed',va?'true':'false');});}
+  Array.prototype.forEach.call(document.querySelectorAll('[data-z="va"]'),function(x){x.addEventListener('click',function(){va=va?null:{fs:1,c:'w',img:1,ls:0};vaApply();window.scrollTo(0,0);});});
+  Array.prototype.forEach.call(document.querySelectorAll('[data-va]'),function(x){x.addEventListener('click',function(){var kv=x.getAttribute('data-va').split(':');if(!va)return;va[kv[0]]=(kv[0]==='c')?kv[1]:+kv[1];vaApply();});});
+  vaApply();
+
   /* Звук электричества */
   var snd=null;function eng(){if(!snd){snd=(function(){
 var AC=window.AudioContext||window.webkitAudioContext;if(!AC){return {on:function(){},off:function(){}};}
