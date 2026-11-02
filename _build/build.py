@@ -168,7 +168,7 @@ def pdf_button(prefix="", cls="btn btn--primary btn--lg", text="Скачать �
 def cta_presentation(prefix=""):
     return f'''<section class="sec sec--tight"><div class="wrap"><div class="cta reveal">{dark_bg()}
 <div class="stack" style="max-width:640px"><span class="eyebrow">Презентация</span>
-<h2 class="h2">Вся группа ЗПТК в одном файле</h2>
+<h2 class="h2">Вся ЗПТК в одном файле</h2>
 <p>Направления, собственные разработки, ориентиры и схемы решений. Удобно переслать коллегам и приложить к запросу.</p></div>
 <div class="actions">{pdf_button(prefix)}<a class="btn btn--ghost btn--lg" href="mailto:{ORG["email"]}">{ORG["email"]}</a></div>
 </div></div></section>'''
@@ -238,13 +238,16 @@ def header(path, prefix):
     desk = "\n".join(link(h, t) for h, t in NAV)
     mob = "\n".join(link(h, t, True) for h, t in NAV)
     return f'''<a class="skip" href="#main">К содержанию</a>
-<header class="hdr"><div class="wrap hdr__in">
+<header class="hdr"><div class="topbar"><div class="wrap topbar__in">
+<a href="tel:{ORG["phone_href"]}" class="mono">{ORG["phone"]}</a>
+<a href="mailto:{ORG["email"]}">{ORG["email"]}</a>
+<a href="{prefix}kontakty.html" class="topbar__addr">Новосибирск, Красный проспект, 200, оф. 912</a>
+</div></div><div class="wrap hdr__in">
 <a class="hdr__logo" href="{prefix}index.html" aria-label="ЗПТК — на главную"><img class="z-logo-d" src="{prefix}logo.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"><img class="z-logo-n" src="{prefix}logo-dark.png" alt="ЗПТК — Завод Программно-Технических Комплексов" width="169" height="44"></a>
 <nav class="hdr__nav" aria-label="Основное меню">
 {desk}
 </nav>
 <div class="hdr__side">
-<a class="hdr__phone" href="tel:{ORG["phone_href"]}">{ORG["phone"]}</a>
 <button type="button" data-z="theme" class="tbtn" aria-label="Переключить дневную / вечернюю тему" title="Дневная / вечерняя тема"><svg class="z-ic-moon" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A8 8 0 0 1 9.5 4a8 8 0 1 0 10.5 10.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><svg class="z-ic-sun" width="20" height="20" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 2v2.5M12 19.5V22M2 12h2.5M19.5 12H22M4.9 4.9l1.8 1.8M17.3 17.3l1.8 1.8M4.9 19.1l1.8-1.8M17.3 6.7l1.8-1.8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 <button type="button" data-z="sound" class="tbtn" aria-pressed="false" aria-label="Звук электричества" title="Звук электричества"><svg width="22" height="22" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9.5h3.5L12 5.5v13l-4.5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path class="z-ic-wave" d="M15.5 9a4 4 0 0 1 0 6M18 6.5a7.5 7.5 0 0 1 0 11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path class="z-ic-mute" d="M16 9.5l5 5M21 9.5l-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
 <button type="button" class="tbtn burger" aria-label="Меню" aria-expanded="false" aria-controls="zMnav" id="zBurger"><span class="z-ic-close" hidden><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M5 5 L17 17 M17 5 L5 17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span><span class="z-ic-open"><svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><path d="M3 6 H19 M3 11 H19 M3 16 H19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span></button>
@@ -260,7 +263,7 @@ def footer(prefix):
     dirs_col = "".join(f'<a href="{prefix}napravleniya/{d["slug"]}.html">{d["title"]}</a>' for d in DIRECTIONS)
     return f'''<footer class="ftr"><div class="wrap ftr__in">
 <div><div class="ftr__h" data-zk>{ORG["name"]} ({ORG["short"]})</div>
-<p>Инжиниринговая группа полного цикла: связь, логистика, энергетика, собственное ПО и EPCM.</p>
+<p>Инжиниринговая компания полного цикла: связь, логистика, энергетика, собственное ПО и EPCM.</p>
 <p class="mono" style="font-size:13px;margin-top:10px">ИНН {ORG["inn"]} · КПП {ORG["kpp"]} · ОГРН {ORG["ogrn"]}</p>
 <p style="margin-top:10px"><a href="tel:{ORG["phone_href"]}" class="mono">{ORG["phone"]}</a><br><a href="mailto:{ORG["email"]}" class="mono">{ORG["email"]}</a></p></div>
 <nav aria-label="Направления"><div class="ftr__h">Направления</div>{dirs_col}</nav>
@@ -360,7 +363,7 @@ def page_index():
     body = f'''<section class="hero" id="top">{dark_bg()}
 <div class="wrap hero__in"><div class="hero__row">
 <div class="hero__text">
-<span class="hero__badge z-rise"><span class="dot z-live"></span>Инжиниринговая группа полного цикла · с 2005 года</span>
+<span class="hero__badge z-rise"><span class="dot z-live"></span>Инжиниринговая компания полного цикла · с 2005 года</span>
 <h1 class="h1 z-rise" style="animation-delay:.12s">Инжиниринг полного цикла для критической инфраструктуры</h1>
 <p class="hero__sub z-rise" style="animation-delay:.2s">Связь. Логистика. Энергетика. Собственное&nbsp;ПО. ИИ-агенты. EPCM.</p>
 <p class="lead z-rise" style="animation-delay:.28s">Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости. Развиваем собственные разработки на базе ИИ и ведём проекты по EPCM-контрактам.</p>
@@ -374,7 +377,7 @@ def page_index():
 <section class="sec" id="napravleniya"><div class="wrap stack-lg">
 <div class="sec-head reveal"><div><span class="eyebrow">Чем мы занимаемся</span>
 <h2 class="h2">Четыре блока, восемь направлений</h2>
-<p class="lead">От проекта и стройки до собственного ПО и сервиса: одна группа отвечает за весь жизненный цикл объекта.</p></div>
+<p class="lead">От проекта и стройки до собственного ПО и сервиса: одна компания отвечает за весь жизненный цикл объекта.</p></div>
 <a class="link-arr" href="napravleniya.html">Все направления {ARR}</a></div>
 <div class="grid-4">{"".join(blocks)}</div>
 </div></section>
@@ -412,7 +415,7 @@ def page_index():
     ld = [{"@context": "https://schema.org", "@type": "WebSite", "name": "ЗПТК", "url": BASE_URL, "inLanguage": "ru"}]
     add("index.html", layout("index.html",
                              "ЗПТК — инжиниринг полного цикла: связь, логистика, энергетика, АИИС КУЭ, EPCM",
-                             "Инжиниринговая группа ЗПТК: связь, логистические центры, АИИС КУЭ и энергосервис, ЦОД, собственное ПО в реестре РФ, ИИ-агенты, предиктивный сервис и EPCM-контракты. С 2005 года.",
+                             "Инжиниринговая компания ЗПТК: связь, логистические центры, АИИС КУЭ и энергосервис, ЦОД, собственное ПО в реестре РФ, ИИ-агенты, предиктивный сервис и EPCM-контракты. С 2005 года.",
                              body, ld))
 
 
@@ -428,7 +431,7 @@ def page_presentation():
                      "Скачать презентацию",
                      "Позиционирование, 8 направлений, собственные разработки, ориентиры и кейсы — в одном PDF-файле.",
                      f'<div class="actions">{pdf_button()}<a class="btn btn--ghost btn--lg" href="napravleniya.html">Смотреть направления на сайте {ARR}</a></div>')
-    sections = [("01", "Позиционирование", "Инжиниринговая группа полного цикла для критической инфраструктуры"),
+    sections = [("01", "Позиционирование", "Инжиниринговая компания полного цикла для критической инфраструктуры"),
                 ("02", "4 блока и 8 направлений", "Инфраструктура, собственные разработки, сервис, EPCM"),
                 ("03", "Схемы решений", "Сигнал → решение → действие для каждого направления"),
                 ("04", "Собственные разработки", "ПТК ЕЦУД в реестре, ИИ-агенты, анализ потерь, финансовый радар"),

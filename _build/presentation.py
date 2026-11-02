@@ -48,7 +48,7 @@ def build():
     s, n = [], 1
     s.append(f'''<section class="slide dark cover"><div class="net"></div>
 <img src="../../logo-dark.png" alt="ЗПТК" class="logo">
-<span class="eyebrow">Инжиниринговая группа полного цикла · с {ORG["founded"]} года</span>
+<span class="eyebrow">Инжиниринговая компания полного цикла · с {ORG["founded"]} года</span>
 <h1>Инжиниринг полного цикла для критической инфраструктуры</h1>
 <p class="sub">Связь. Логистика. Энергетика. Собственное ПО. ИИ-агенты. EPCM.</p>
 <p class="pos">Проектируем, строим и обслуживаем инфраструктуру повышенной отказоустойчивости. Собственные разработки на базе ИИ. EPCM-контракты.</p>
@@ -66,7 +66,7 @@ def build():
         dirs = [d for d in DIRECTIONS if d["block"] == b["key"]]
         cols.append(f'<div class="col"><span class="k">{b["n"]}</span><h3>{b["title"]}</h3><p>{b["text"]}</p><ul>' +
                     "".join(f"<li>{d['title']}</li>" for d in dirs) + '</ul></div>')
-    s.append(slide(f'<span class="eyebrow">Структура группы</span><h2>Четыре блока, восемь направлений</h2><div class="cols">{"".join(cols)}</div>', n=n))
+    s.append(slide(f'<span class="eyebrow">Структура компании</span><h2>Четыре блока, восемь направлений</h2><div class="cols">{"".join(cols)}</div>', n=n))
     for i, d in enumerate(DIRECTIONS):
         n += 1
         tech = " · ".join(t for t, x in d["tech"])
