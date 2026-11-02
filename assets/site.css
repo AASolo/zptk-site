@@ -5,7 +5,7 @@
   --blue:#0077B6; --blue-2:#008DD2; --sky:#3DB4F0; --sky-2:#7FD0F7; --ice:#D6ECFA;
   --bg:#F4F7FA; --bg-2:#E7EFF5; --surface:#FFFFFF; --line:#CFDCE7; --line-2:#E3ECF3;
   --ink:#0A2A42; --ink-2:#3A4B59; --muted:#4A5A67; --on-dark:#F4F7FA; --on-dark-2:#C5D8E6; --on-dark-3:#A6C0D4;
-  --accent:#0077B6; --todo-bg:#FFF4CC; --todo-ink:#6B4E00; --todo-line:#E0B020;
+  --accent:#00669C; --todo-bg:#FFF4CC; --todo-ink:#6B4E00; --todo-line:#E0B020;
   --radius:10px; --wrap:1280px; --gutter:32px;
   --mono:'IBM Plex Mono',ui-monospace,monospace; --sans:'IBM Plex Sans',system-ui,sans-serif;
 }
@@ -169,6 +169,7 @@ a.card{text-decoration:none;color:inherit}
 .card:hover .ico{transform:scale(1.1) rotate(-6deg)}
 .card__tag{font-family:var(--mono);font-size:13px;color:var(--muted)}
 .card__more{margin-top:auto;padding-top:6px;font-weight:600;font-size:15px;color:var(--accent);display:inline-flex;align-items:center;gap:8px}
+.card--dark .card__more{color:var(--sky-2)}
 .card--dark{background:var(--navy-3);border-color:var(--navy-line);color:var(--on-dark)}
 .card--dark p{color:var(--on-dark-2)}
 .card--dark .ico{color:var(--sky)}
@@ -227,7 +228,7 @@ html.z-night .card--dark{background:#0E2232}
 /* ---------- Статусы ---------- */
 .status{display:inline-flex;align-items:center;gap:8px;align-self:flex-start;font-family:var(--mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:6px 12px;border-radius:40px;border:1px solid currentColor}
 .status::before{content:'';width:7px;height:7px;border-radius:50%;background:currentColor}
-.status--reg{color:#0E8A5F}
+.status--reg{color:#0B7350}
 .status--pilot{color:var(--accent)}
 .status--rnd{color:#8A5BD0}
 html.z-night .status--reg{color:#4CD69B}
